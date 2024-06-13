@@ -15,7 +15,7 @@ export PATH=$HOME/.rbenv/bin:$PATH
 eval "$(rbenv init -)"
 # If you come from bash you might have to change your $PATH.
 #export PATH=$HOME/bin:/usr/local/bin:$PATH
-export GEM_HOME=$(ruby -e 'puts Gem.user_dir')
+# export GEM_HOME=$(ruby -e 'puts Gem.user_dir')
 export PATH=$PATH:$GEM_HOME/bin
 
 # Path to your oh-my-zsh installation.
@@ -114,9 +114,9 @@ alias cl="clear"
 function setup_colorls(){
   if [ -z "$(gem list | grep colorls)" ]; then 
 		echo "colorls not found, attempting to install..."
-    eval "gem install colorls"
-    echo "sourcing zsh"
-    eval "source ~/.zshrc"
+		eval "gem install colorls"
+		echo "sourcing zsh"
+		eval "source ~/.zshrc"
   else
 		echo "Setting up colorls (ls && ll)"
 		alias ls="colorls"
@@ -124,7 +124,7 @@ function setup_colorls(){
 	fi
 }
 
-setup_colorls
+# setup_colorls
 
 bindkey '^I'   complete-word       # tab          | complete
 bindkey '^[[Z' autosuggest-accept  # shift + tab  | autosuggest
