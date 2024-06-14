@@ -16,6 +16,9 @@ alias zshconfig="cd ~ && nvim .zshrc"
 alias sshg="ssh -T git@github.com"
 alias gst="git status"
 alias cl="clear"
+if alias ll>/dev/null; then 
+  unalias ll
+fi
 alias ll="ls -a -h -t -l"
 alias lls="ls -h -f"
 alias so="source $HOME/.zshrc"
