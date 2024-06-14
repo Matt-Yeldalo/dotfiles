@@ -1,3 +1,5 @@
+# If you come from bash you might have to change your $PATH.
+export PATH=$HOME/bin:/usr/local/bin:$PATH
 # ZAP
 [ -f "${XDG_DATA_HOME:-$HOME/.local/share}/zap/zap.zsh" ] && source "${XDG_DATA_HOME:-$HOME/.local/share}/zap/zap.zsh"
 plug "zsh-users/zsh-autosuggestions"
@@ -10,6 +12,7 @@ autoload -Uz compinit
 compinit
 # MY CONFIG
 # ALIAS
+source $HOME/.bash_aliases
 alias nvimconfig="cd ~/.config/nvim"
 # alias lvimconfig="cd ~/.config/nvim"
 alias zshconfig="cd ~ && nvim .zshrc"
