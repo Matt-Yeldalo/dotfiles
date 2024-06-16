@@ -23,9 +23,9 @@ fi
 alias ll="ls -A -h -t -l"
 alias lls="ls -h -f"
 alias so="source $HOME/.zshrc"
+alias wwconfig="nvim /mnt/c/Users/matt/.wezterm.lua"
 # FUNCTIONS
 # git commit -am "{message}"
-# unalias gca
 gca () {
   git commit -am "$1"
 }
@@ -38,13 +38,4 @@ export PATH="$PATH:$HOME/.cargo/bin/"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 fpath=($fpath "$HOME/.zfunctions")
-
-# Set typewritten ZSH as a prompt
-# TYPEWRITTEN_PROMPT_LAYOUT="pure"
-# TYPEWRITTEN_SYMBOL=
-# TYPEWRITTEN_ARROW_SYMBOL="~>"
-# TYPEWRITTEN_CURSOR="block"
-# export TYPEWRITTEN_COLOR_MAPPINGS="primary:red;secondary:red;accent:black;foreground:black"
-# autoload -U promptinit; promptinit
-# prompt typewritten
 
