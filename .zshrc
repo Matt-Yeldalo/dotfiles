@@ -4,9 +4,9 @@ plug "zsh-users/zsh-autosuggestions"
 plug "zdharma-continuum/fast-syntax-highlighting"
 plug "marlonrichert/zsh-autocomplete"
 plug "zap-zsh/supercharge"
-plug "$HOME/zsh/my-theme.zsh-theme" # Prompt theme
+plug "zap-zsh/zap-prompt"
+# plug "$HOME/zsh/my-theme.zsh-theme" # Prompt theme
 # plug "https://github.com/dikiaap/dotfiles/blob/master/.oh-my-zsh/themes/oxide.zsh-theme"
-# plug "zap-zsh/zap-prompt"
 # Load and initialise completion system
 autoload -Uz compinit
 compinit
@@ -39,4 +39,4 @@ export PATH="$PATH:$HOME/.cargo/bin/"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 fpath=($fpath "$HOME/.zfunctions")
 # STARSHIP
-eval "$(starship init zsh)"
+# eval "$(starship init zsh)"
