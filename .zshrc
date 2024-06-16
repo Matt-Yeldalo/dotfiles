@@ -7,27 +7,28 @@ plug "zdharma-continuum/fast-syntax-highlighting"
 plug "marlonrichert/zsh-autocomplete"
 plug "zap-zsh/supercharge"
 plug "zap-zsh/zap-prompt"
+# plug "$HOME/zsh/my-theme.zsh-theme" # Prompt theme
+# plug "https://github.com/dikiaap/dotfiles/blob/master/.oh-my-zsh/themes/oxide.zsh-theme"
 # Load and initialise completion system
 autoload -Uz compinit
 compinit
 # MY CONFIG
 # ALIAS
 source $HOME/.bash_aliases
-alias nvimconfig="cd ~/.config/nvim"
-# alias lvimconfig="cd ~/.config/nvim"
-alias zshconfig="cd ~ && nvim .zshrc"
-alias sshg="ssh -T git@github.com"
+alias nvimconfig="cd $HOME/.config/nvim"
+alias lvimconfig="cd $HOME/.config/lvim"
+alias zshconfig="cd $HOME && nvim .zshrc"
 alias gst="git status"
 alias cl="clear"
 if alias ll>/dev/null; then 
   unalias ll
 fi
-alias ll="ls -a -h -t -l"
+alias ll="ls -A -h -t -l"
 alias lls="ls -h -f"
 alias so="source $HOME/.zshrc"
+alias wwconfig="nvim /mnt/c/Users/matt/.wezterm.lua"
 # FUNCTIONS
 # git commit -am "{message}"
-# unalias gca
 gca () {
   git commit -am "$1"
 }
@@ -39,3 +40,6 @@ export NVM_DIR="$HOME/.nvm"
 export PATH="$PATH:$HOME/.cargo/bin/"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+fpath=($fpath "$HOME/.zfunctions")
+# STARSHIP
+# eval "$(starship init zsh)"
