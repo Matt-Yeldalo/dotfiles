@@ -41,7 +41,10 @@ fi
 
 # Reset color.
 oxide_reset_color="%f"
-lambda_icon="\ue6b1"
+my_icon_lambda=""
+my_icon_arrow="~>"
+my_icon_r_arrow=''
+my_head_icon=$my_icon_r_arrow
 
 # VCS style formats.
 FMT_UNSTAGED="%{$oxide_reset_color%} %{$oxide_orange%}●"
@@ -70,4 +73,4 @@ zstyle ':vcs_info:git*+set-message:*' hooks git-untracked
 add-zsh-hook precmd vcs_info
 
 # Oxide prompt style.
-PROMPT=$'%{$oxide_limegreen%}%~%{$oxide_reset_color%} ${vcs_info_msg_0_}\n%(?.%{%F{white}%}.%{$oxide_red%})%(!.#.❯)%{$oxide_reset_color%} '
+PROMPT=$'%{$oxide_limegreen%}%~%{$oxide_reset_color%} ${vcs_info_msg_0_}\n%(?.%{%F{white}%}.%{$oxide_red%})%(!.#.$my_head_icon)%{$oxide_reset_color%} '
