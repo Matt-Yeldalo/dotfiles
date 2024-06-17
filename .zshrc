@@ -6,7 +6,7 @@ plug "zsh-users/zsh-autosuggestions"
 plug "zdharma-continuum/fast-syntax-highlighting"
 plug "marlonrichert/zsh-autocomplete"
 plug "zap-zsh/supercharge"
-plug "zap-zsh/zap-prompt"
+# plug "zap-zsh/zap-prompt"
 # plug "$HOME/zsh/my-theme.zsh-theme" # Prompt theme
 # plug "https://github.com/dikiaap/dotfiles/blob/master/.oh-my-zsh/themes/oxide.zsh-theme"
 # Load and initialise completion system
@@ -26,7 +26,7 @@ fi
 alias ll="ls -A -h -t -l"
 alias lls="ls -h -f"
 alias so="source $HOME/.zshrc"
-alias wwconfig="nvim /mnt/c/Users/matt/.wezterm.lua"
+# alias wwconfig="nvim /mnt/c/Users/matt/.wezterm.lua"
 # FUNCTIONS
 # git commit -am "{message}"
 gca () {
@@ -42,4 +42,9 @@ export PATH="$PATH:$HOME/.cargo/bin/"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 fpath=($fpath "$HOME/.zfunctions")
 # STARSHIP
-# eval "$(starship init zsh)"
+eval "$(starship init zsh)"
+eval "$($HOME/.rbenv/bin/rbenv init -)"
+# assuming that rbenv was installed to `~/.rbenv`
+FPATH=~/.rbenv/completions:"$FPATH"
+autoload -U compinit
+compinit
