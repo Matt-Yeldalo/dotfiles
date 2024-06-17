@@ -43,8 +43,8 @@ export PATH="$PATH:$HOME/.cargo/bin/"
 fpath=($fpath "$HOME/.zfunctions")
 # STARSHIP
 eval "$(starship init zsh)"
-eval "$($HOME/.rbenv/bin/rbenv init -)"
+# eval "$($HOME/.rbenv/bin/rbenv init -)"
 # assuming that rbenv was installed to `~/.rbenv`
-FPATH=~/.rbenv/completions:"$FPATH"
-autoload -U compinit
-compinit
+# FPATH=~/.rbenv/completions:"$FPATH"
+# autoload -U compinit
+# compinit
