@@ -16,7 +16,7 @@ alias nvimconfig="cd $HOME/.config/nvim"
 alias lvimconfig="cd $HOME/.config/lvim"
 alias zshconfig="cd $HOME && nvim .zshrc"
 alias gst="git status"
-alias cl="clear"
+alias gbr="git branch -vv"
 if alias ll>/dev/null; then 
   unalias ll
 fi
