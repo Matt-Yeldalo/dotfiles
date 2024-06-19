@@ -15,13 +15,16 @@ compinit
 alias nvimconfig="cd $HOME/.config/nvim"
 alias lvimconfig="cd $HOME/.config/lvim"
 alias zshconfig="cd $HOME && nvim .zshrc"
+alias ozsh="nvim $HOME/zsh/.zshrc"
+alias onvim="nvim $HOME/.config/nvim/init.lua"
 alias gst="git status"
 alias gbr="git branch -vv"
+alias lls="ls -h -f"
+alias llc="colorls -lA --sd"
 if alias ll>/dev/null; then 
   unalias ll
 fi
-alias ll="ls -A -h -t -l"
-alias lls="ls -h -f"
+alias ll="ls -ltr -A"
 alias so="source $HOME/.zshrc"
 # alias wwconfig="nvim /mnt/c/Users/matt/.wezterm.lua"
 # FUNCTIONS
@@ -42,6 +45,6 @@ fpath=($fpath "$HOME/.zfunctions")
 eval "$(starship init zsh)"
 eval "$($HOME/.rbenv/bin/rbenv init -)"
 # assuming that rbenv was installed to `~/.rbenv`
-FPATH=~/.rbenv/completions:"$FPATH"
+FPATH=$HOME/.rbenv/completions:"$FPATH"
 autoload -U compinit
 compinit
