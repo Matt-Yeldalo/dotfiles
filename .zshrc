@@ -26,6 +26,10 @@ alias gf="git fetch"
 if alias ll>/dev/null; then 
   unalias ll
 fi
+if alias l>/dev/null; then 
+  unalias l
+fi
+alias l="ls -ltr -A"
 alias ll="ls -ltr -A"
 # alias wwconfig="nvim /mnt/c/Users/matt/.wezterm.lua"
 # FUNCTIONS
