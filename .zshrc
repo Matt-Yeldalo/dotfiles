@@ -29,6 +29,8 @@ if alias ll>/dev/null; then
 fi
 alias ll="ls -ltr -A"
 alias so="source $HOME/.zshrc"
+alias np="cd $HOME/.config/nvim/lua/custom/plugins"
+alias nc="cd $HOME/.config/nvim/"
 # alias wwconfig="nvim /mnt/c/Users/matt/.wezterm.lua"
 # FUNCTIONS
 # git commit -am "{message}"
