@@ -14,22 +14,22 @@ compinit
 # ALIAS
 alias nvimconfig="cd $HOME/.config/nvim"
 alias lvimconfig="cd $HOME/.config/lvim"
-alias zshconfig="cd $HOME && nvim .zshrc"
+alias zshconfig="cd $HOME/zsh"
 alias ozsh="nvim $HOME/zsh/.zshrc"
 alias onvim="nvim $HOME/.config/nvim/init.lua"
 alias gst="git status"
 alias gbr="git branch -vv"
 alias lls="ls -h -f"
 alias llc="colorls -lA --sd"
+alias so="source $HOME/.zshrc"
+alias gf="git fetch"
 if alias ll>/dev/null; then 
   unalias ll
 fi
 alias ll="ls -ltr -A"
-alias so="source $HOME/.zshrc"
 # alias wwconfig="nvim /mnt/c/Users/matt/.wezterm.lua"
 # FUNCTIONS
-# git commit -am "{message}"
-gca () {
+gca () { # git commit -am "{message}"
   git commit -am "$1"
 }
 bindkey '^I'   complete-word       # tab          | complete
