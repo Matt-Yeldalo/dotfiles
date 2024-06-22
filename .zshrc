@@ -33,8 +33,14 @@ alias l="ls -ltr -A"
 alias ll="ls -ltr -A"
 # alias wwconfig="nvim /mnt/c/Users/matt/.wezterm.lua"
 # FUNCTIONS
-gca () { # git commit -am "{message}"
+gca() { # git commit -am "{message}"
   git commit -am "$1"
+}
+cat_line() {
+  cat $1 | tr -d "\n"
+}
+catr() {
+  tail -n "+$1" $3 | head -n "$(($2 - $1 +1))"
 }
 bindkey '^I'   complete-word       # tab          | complete
 bindkey '^[[Z' autosuggest-accept  # shift + tab  | autosuggest
