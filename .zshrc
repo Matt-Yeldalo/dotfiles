@@ -48,4 +48,3 @@ eval "$($HOME/.rbenv/bin/rbenv init -)"
 FPATH=$HOME/.rbenv/completions:"$FPATH"
 autoload -U compinit
 compinit
->>>>>>> master
