@@ -31,6 +31,8 @@ alias p="cd $HOME/projects/"
 alias p-lang="cd $HOME/projects/lang/"
 alias lls="ls -h -f"
 alias llc="colorls -lA --sd"
+alias so="source $HOME/.zshrc"
+alias nc="cd $HOME/.config/nvim/"
 if alias ll>/dev/null; then 
   unalias ll
 fi
@@ -39,9 +41,6 @@ if alias l>/dev/null; then
 fi
 alias l="ls -ltr -A"
 alias ll="ls -ltr -A"
-alias so="source $HOME/.zshrc"
-alias np="cd $HOME/.config/nvim/lua/custom/plugins"
-alias nc="cd $HOME/.config/nvim/"
 # alias wwconfig="nvim /mnt/c/Users/matt/.wezterm.lua"
 # FUNCTIONS
 gca() { # git commit -am "{message}"
