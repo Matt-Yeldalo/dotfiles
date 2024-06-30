@@ -33,6 +33,7 @@ alias lls="ls -h -f"
 alias llc="colorls -lA --sd"
 alias so="source $HOME/.zshrc"
 alias nc="cd $HOME/.config/nvim/"
+alias qn="cd $HOME/quick-notes/"
 if alias ll>/dev/null; then 
   unalias ll
 fi
