@@ -24,6 +24,7 @@ alias gst="git status"
 alias gbr="git branch -vv"
 alias gf="git fetch"
 # OTHER
+alias c="clear"
 alias p="cd $HOME/projects/"
 alias p-lang="cd $HOME/projects/lang/"
 alias lls="ls -h -f"
