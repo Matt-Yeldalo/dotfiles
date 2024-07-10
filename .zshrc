@@ -70,12 +70,12 @@ bindkey '^[[Z' autosuggest-accept  # shift + tab  | autosuggest
 export NVM_DIR="$HOME/.nvm"
 add_path_tail "$HOME/.local/bin/lvim"
 add_path_tail "$HOME/.cargo/bin/"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+# [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+# [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 fpath=($fpath "$HOME/.zfunctions")
 # STARSHIP
 eval "$(starship init zsh)"
-# eval "$($HOME/.rbenv/bin/rbenv init -)"
+eval "$($HOME/.rbenv/bin/rbenv init -)"
 # assuming that rbenv was installed to `~/.rbenv`
 FPATH=$HOME/.rbenv/completions:"$FPATH"
 autoload -U compinit
