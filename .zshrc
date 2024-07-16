@@ -38,6 +38,14 @@ fi
 alias l="ls -ltr -A"
 alias ll="ls -ltr -A"
 # FUNCTIONS
+coutr(){
+  echo
+  gcc -o output $1 && ./output
+  echo
+}
+cout(){
+  gcc -o output $1
+}
 gca() { # git commit -am "{message}"
   git commit -am "$1"
 }
