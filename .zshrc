@@ -15,7 +15,7 @@ source $HOME/.bash_aliases
 # NVIM / LVIM
 alias nvimconfig="cd $HOME/.config/nvim"
 alias lvimconfig="cd $HOME/.config/lvim"
-alias onvim="nvim $HOME/.config/nvim/init.lua"
+alias onvim="nvim $HOME/.config/nvim/lua/matt/init.lua"
 alias np="cd $HOME/.config/nvim/lua/matt/plugins/"
 alias n="nvim"
 # ZSH
@@ -83,3 +83,6 @@ eval "$($HOME/.rbenv/bin/rbenv init -)"
 eval "$(rbenv init - zsh)"
 # assuming that rbenv was installed to `~/.rbenv`
 FPATH=$HOME/.rbenv/completions:"$FPATH"
+
+autoload -U compinit
+compinit
