@@ -76,3 +76,6 @@ eval "$($HOME/.rbenv/bin/rbenv init -)"
 eval "$(rbenv init - zsh)"
 # assuming that rbenv was installed to `~/.rbenv`
 FPATH=$HOME/.rbenv/completions:"$FPATH"
+
+autoload -U compinit
+compinit
