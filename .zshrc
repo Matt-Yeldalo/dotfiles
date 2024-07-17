@@ -12,7 +12,7 @@ source $HOME/.zsh/zsh-autocomplete/zsh-autocomplete.plugin.zsh
 # NVIM / LVIM
 alias nvimconfig="cd $HOME/.config/nvim"
 alias lvimconfig="cd $HOME/.config/lvim"
-alias onvim="nvim $HOME/.config/nvim/init.lua"
+alias onvim="nvim $HOME/.config/nvim/lua/matt/init.lua"
 alias np="cd $HOME/.config/nvim/lua/matt/plugins/"
 alias n="nvim"
 # ZSH
