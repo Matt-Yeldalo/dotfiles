@@ -27,6 +27,7 @@ alias so="source $HOME/.zshrc"
 alias gst="git status"
 alias gbr="git branch -vv"
 alias gf="git fetch"
+alias gd="git diff"
 # OTHER
 alias c="clear"
 alias p="cd $HOME/projects/"
