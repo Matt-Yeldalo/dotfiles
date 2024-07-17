@@ -5,8 +5,12 @@ export PATH=$HOME/bin:/usr/local/bin:$PATH
 # plug "marlonrichert/zsh-autocomplete"
 # plug "zap-zsh/supercharge"
 VIM="nvim"
+# LIBS
+source $HOME/zsh/lib/theme-and-appearance.zsh
+source $HOME/zsh/lib/async_prompt.zsh
+source $HOME/zsh/lib/git.zsh
 # PLUGINS
-source $HOME/zsh/my-theme.zsh-theme
+source $HOME/zsh/themes/robbyrussell.zsh-theme
 source $HOME/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 source $HOME/.zsh/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
 source $HOME/.zsh/zsh-autocomplete/zsh-autocomplete.plugin.zsh
@@ -26,6 +30,7 @@ alias so="source $HOME/.zshrc"
 alias gst="git status"
 alias gbr="git branch -vv"
 alias gf="git fetch"
+alias gd="git diff"
 # OTHER
 alias c="clear"
 alias p="cd $HOME/projects/"
@@ -86,3 +91,6 @@ FPATH=$HOME/.rbenv/completions:"$FPATH"
 
 autoload -U compinit
 compinit
+
+# Generated for envman. Do not edit.
+[ -s "$HOME/.config/envman/load.sh" ] && source "$HOME/.config/envman/load.sh"
