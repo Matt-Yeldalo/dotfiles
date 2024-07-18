@@ -29,11 +29,11 @@ alias gbr="git branch -vv"
 alias gf="git fetch"
 alias gd="git diff"
 # OTHER
+alias lls="ls -h -f"
+alias llc="colorls -lA --sd"
 alias c="clear"
 alias p="cd $HOME/projects/"
 alias p-lang="cd $HOME/projects/lang/"
-alias lls="ls -h -f"
-alias llc="colorls -lA --sd"
 if alias ll>/dev/null; then 
   unalias ll
 fi
@@ -43,6 +43,12 @@ fi
 alias l="ls -ltr -A"
 alias ll="ls -ltr -A"
 # FUNCTIONS
+toucho(){
+  touch $1 && nvim $1
+}
+mkdira(){
+  mkdir $1 && cd $1
+}
 coutr(){
   echo
   gcc -o output $1 && ./output
@@ -77,7 +83,7 @@ export NVM_DIR="$HOME/.nvm"
 add_path_tail "$HOME/.local/bin/lvim"
 add_path_tail "$HOME/.cargo/bin/"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-eval "$($HOME/.rbenv/bin/rbenv init -)"
+# eval "$($HOME/.rbenv/bin/rbenv init -)"
 eval "$(rbenv init - zsh)"
 # assuming that rbenv was installed to `~/.rbenv`
 FPATH=$HOME/.rbenv/completions:"$FPATH"
