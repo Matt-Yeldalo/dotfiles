@@ -9,14 +9,14 @@ source $HOME/zsh/lib/async_prompt.zsh
 source $HOME/zsh/lib/git.zsh
 # PLUGINS
 source $HOME/zsh/themes/robbyrussell.zsh-theme
-source $HOME/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 source $HOME/.zsh/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
+source $HOME/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 source $HOME/.zsh/zsh-autocomplete/zsh-autocomplete.plugin.zsh
 # ALIAS
 # NVIM / LVIM
 alias nvimconfig="cd $HOME/.config/nvim"
 alias lvimconfig="cd $HOME/.config/lvim"
-alias onvim="nvim $HOME/.config/nvim/lua/matt/init.lua"
+alias onvim="nvim $HOME/.config/nvim/init.lua"
 alias np="cd $HOME/.config/nvim/lua/matt/plugins/"
 alias n="nvim"
 # ZSH
@@ -28,6 +28,9 @@ alias gst="git status"
 alias gbr="git branch -vv"
 alias gf="git fetch"
 alias gd="git diff"
+# BAT
+alias bat="batcat"
+alias b="batcat"
 # OTHER
 alias lls="ls -h -f"
 alias llc="colorls -lA --sd"
@@ -83,7 +86,7 @@ export NVM_DIR="$HOME/.nvm"
 add_path_tail "$HOME/.local/bin/lvim"
 add_path_tail "$HOME/.cargo/bin/"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-# eval "$($HOME/.rbenv/bin/rbenv init -)"
+eval "$($HOME/.rbenv/bin/rbenv init -)"
 eval "$(rbenv init - zsh)"
 # assuming that rbenv was installed to `~/.rbenv`
 FPATH=$HOME/.rbenv/completions:"$FPATH"
