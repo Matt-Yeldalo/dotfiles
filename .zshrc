@@ -11,8 +11,8 @@ source $HOME/zsh/lib/async_prompt.zsh
 source $HOME/zsh/lib/git.zsh
 # PLUGINS
 source $HOME/zsh/themes/robbyrussell.zsh-theme
-source $HOME/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 source $HOME/.zsh/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
+source $HOME/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 source $HOME/.zsh/zsh-autocomplete/zsh-autocomplete.plugin.zsh
 # ALIAS
 source $HOME/.bash_aliases
@@ -31,6 +31,9 @@ alias gst="git status"
 alias gbr="git branch -vv"
 alias gf="git fetch"
 alias gd="git diff"
+# BAT
+alias bat="batcat"
+alias b="batcat"
 # OTHER
 alias lls="ls -h -f"
 alias llc="colorls -lA --sd"
