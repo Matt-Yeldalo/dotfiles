@@ -4,11 +4,11 @@
 # plug "zap-zsh/supercharge"
 VIM="nvim"
 # LIBS
-source $HOME/zsh/lib/theme-and-appearance.zsh
-source $HOME/zsh/lib/async_prompt.zsh
-source $HOME/zsh/lib/git.zsh
+source $HOME/zsh/shell/lib/theme-and-appearance.zsh
+source $HOME/zsh/shell/lib/async_prompt.zsh
+source $HOME/zsh/shell/lib/git.zsh
 # PLUGINS
-source $HOME/zsh/themes/robbyrussell.zsh-theme
+source $HOME/zsh/shell/themes/robbyrussell.zsh-theme
 source $HOME/.zsh/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
 source $HOME/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 source $HOME/.zsh/zsh-autocomplete/zsh-autocomplete.plugin.zsh
@@ -32,6 +32,7 @@ alias gd="git diff"
 alias bat="batcat"
 alias b="batcat"
 # OTHER
+alias owez="nvim $HOME/zsh/.wezterm.lua"
 alias lls="ls -h -f"
 alias llc="colorls -lA --sd"
 alias c="clear"
@@ -96,3 +97,6 @@ compinit
 
 # Generated for envman. Do not edit.
 [ -s "$HOME/.config/envman/load.sh" ] && source "$HOME/.config/envman/load.sh"
+
+autoload -Uz compinit && compinit 
+
