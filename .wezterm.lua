@@ -19,7 +19,7 @@ config.window_frame = {
 
 config.keys = {
 	{
-		key = 'F12',
+		key = 'F11',
 		action = wezterm.action.ToggleFullScreen
 	}
 }
