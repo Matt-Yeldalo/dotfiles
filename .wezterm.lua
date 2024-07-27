@@ -17,15 +17,22 @@ config.window_frame = {
 	button_hover_bg = "#3b3052",
 }
 
+config.keys = {
+	{
+		key = 'F12',
+		action = wezterm.action.ToggleFullScreen
+	}
+}
+
 config.colors = {
-	ansi = { "#214969", "#E52E2E", "#44FFB1", "#FFE073", "#0FC5ED", "#a277ff", "#24EAF7", "#24EAF7" },
-	brights = { "#214969", "#E52E2E", "#44FFB1", "#FFE073", "#A277FF", "#a277ff", "#24EAF7", "#24EAF7" },
+ansi = { "#214969", "#E52E2E", "#44FFB1", "#FFE073", "#0FC5ED", "#a277ff", "#24EAF7", "#24EAF7" },
+brights = { "#214969", "#E52E2E", "#44FFB1", "#FFE073", "#A277FF", "#a277ff", "#24EAF7", "#24EAF7" },
 }
 
 config.color_scheme = "Afterglow (Gogh)"
 config.font = wezterm.font({
-	family = "MartianMono Nerd Font",
-	weight = "Medium",
+family = "MartianMono Nerd Font",
+weight = "Medium",
 })
 config.window_background_opacity = 0.7
 -- config.macos_window_background_blur = 8
@@ -35,7 +42,6 @@ config.bold_brightens_ansi_colors = true
 config.font_size = 17
 config.line_height = 1.1
 config.enable_tab_bar = false
-config.window_decorations = "RESIZE"
+config.window_decorations = "TITLE | RESIZE"
 
 return config
-
