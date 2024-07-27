@@ -19,8 +19,12 @@ config.window_frame = {
 
 config.keys = {
 	{
-		key = 'F11',
-		action = wezterm.action.window:maximize()
+		key = 'F1',
+		action = wezterm.action.TogglePaneZoomState
+	},
+	{
+		key = 'F2',
+		action = wezterm.action.ToggleFullScreen
 	}
 }
 
