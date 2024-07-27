@@ -42,6 +42,6 @@ config.bold_brightens_ansi_colors = true
 config.font_size = 17
 config.line_height = 1.1
 config.enable_tab_bar = false
-config.window_decorations = "TITLE | RESIZE"
+-- config.window_decorations = "TITLE | RESIZE"
 
 return config
