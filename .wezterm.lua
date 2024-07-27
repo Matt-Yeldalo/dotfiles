@@ -20,7 +20,7 @@ config.window_frame = {
 config.keys = {
 	{
 		key = 'F11',
-		action = wezterm.action.ToggleFullScreen
+		action = wezterm.action.window:maximize()
 	}
 }
 
