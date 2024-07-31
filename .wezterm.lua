@@ -1,7 +1,7 @@
 local wezterm = require("wezterm")
 local config = wezterm.config_builder()
 
-config.default_domain = "WSL:Ubuntu"
+-- config.default_domain = "WSL:Ubuntu"
 
 config.window_frame = {
 	font = wezterm.font({ family = "MartianMono Nerd Font", weight = "Bold" }),
@@ -30,12 +30,12 @@ config.font = wezterm.font({
 config.window_background_opacity = 0.7
 -- config.macos_window_background_blur = 8
 -- config.win32_system_backdrop = "Acrylic"
-config.win32_acrylic_accent_color = "#447799"
+-- config.win32_acrylic_accent_color = "#447799"
 config.bold_brightens_ansi_colors = true
 config.font_size = 17
 config.line_height = 1.1
 config.enable_tab_bar = false
-config.window_decorations = "RESIZE"
+config.window_decorations = "TITLE | RESIZE"
 
 return config
 
