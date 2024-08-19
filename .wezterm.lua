@@ -28,6 +28,7 @@ config.keys = {
 	}
 }
 
+config.audible_bell = "Disabled"
 config.colors = {
 ansi = { "#214969", "#E52E2E", "#44FFB1", "#FFE073", "#0FC5ED", "#a277ff", "#24EAF7", "#24EAF7" },
 brights = { "#214969", "#E52E2E", "#44FFB1", "#FFE073", "#A277FF", "#a277ff", "#24EAF7", "#24EAF7" },
