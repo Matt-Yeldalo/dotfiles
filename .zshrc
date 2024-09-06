@@ -24,6 +24,7 @@ alias gst="git status"
 alias gbr="git branch -vv"
 alias gf="git fetch"
 alias gd="git diff"
+alias glog="git log --oneline --decorate --graph --parents"
 # BAT
 alias bat="batcat"
 alias b="batcat"
