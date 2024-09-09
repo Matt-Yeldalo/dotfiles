@@ -1,9 +1,5 @@
 # If you come from bash you might have to change your $PATH.
 export PATH=$HOME/bin:/usr/local/bin:$PATH
-# plug "zsh-users/zsh-autosuggestions"
-# plug "zdharma-continuum/fast-syntax-highlighting"
-# plug "marlonrichert/zsh-autocomplete"
-# plug "zap-zsh/supercharge"
 VIM="nvim"
 # LIBS
 source $HOME/zsh/shell/lib/theme-and-appearance.zsh
@@ -31,14 +27,19 @@ alias gst="git status"
 alias gbr="git branch -vv"
 alias gf="git fetch"
 alias gd="git diff"
+alias glog="git log --oneline --decorate --graph --parents"
 # BAT
 alias bat="batcat"
 alias b="batcat"
 # OTHER
+alias wslcode="/mnt/c/Users/matt/AppData/Local/Programs/'Microsoft VS Code'/bin/code ."
 alias owez="nvim $HOME/zsh/.wezterm.lua"
 alias lls="ls -h -f"
 alias llc="colorls -lA --sd"
+alias os="nvim $HOME/projects/localserver.sh"
+alias qn="cd $HOME/projects/tools/quick-note/"
 alias c="clear"
+## PROJECTS
 alias p="cd $HOME/projects/"
 alias p-lang="cd $HOME/projects/lang/"
 alias lls="ls -h -f"
@@ -56,11 +57,27 @@ alias l="ls -ltr -A"
 alias ll="ls -ltr -A"
 # alias wwconfig="nvim /mnt/c/Users/matt/.wezterm.lua"
 # FUNCTIONS
+tartar(){
+  tar -xvf $1 
+}
+tartargz(){
+  tar -xzvf $1 
+}
+oman(){
+  printf "Running man %s | grep %s\n" $1 $2
+  man $1 | grep $2
+}
 toucho(){
   touch $1 && nvim $1
 }
 mkdira(){
   mkdir $1 && cd $1
+}
+zout(){
+  basename=$(basename "$1" | cut -d. -f1)
+  echo 
+  zig build-exe $1 && "./$basename"
+  echo
 }
 coutr(){
   echo
@@ -95,6 +112,8 @@ bindkey '^[[Z' autosuggest-accept  # shift + tab  | autosuggest
 export NVM_DIR="$HOME/.nvm"
 add_path_tail "$HOME/.local/bin/lvim"
 add_path_tail "$HOME/.cargo/bin/"
+add_path_tail "$HOME/zig-linux-x86_64-0.14.0-dev.620+eab934814/"
+add_path_tail "$HOME/.zls/zls"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 eval "$($HOME/.rbenv/bin/rbenv init -)"
 eval "$(rbenv init - zsh)"
