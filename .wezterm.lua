@@ -38,13 +38,13 @@ config.font = wezterm.font({
 family = "MartianMono Nerd Font",
 weight = "Medium",
 })
-config.window_background_opacity = 0.7
+config.window_background_opacity = 0.9
 -- config.macos_window_background_blur = 8
 -- config.win32_system_backdrop = "Acrylic"
 -- config.win32_acrylic_accent_color = "#447799"
 config.bold_brightens_ansi_colors = true
-config.font_size = 17
-config.line_height = 1.1
+config.font_size = 14
+config.line_height = 1.2
 config.enable_tab_bar = false
 config.window_decorations = "TITLE | RESIZE"
 
