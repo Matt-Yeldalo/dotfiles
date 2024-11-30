@@ -18,6 +18,7 @@ alias n="nvim"
 # ZSH
 alias zshconfig="cd $HOME/zsh"
 alias ozsh="nvim $HOME/zsh/.zshrc"
+alias obash="nvim $HOME/.bashrc"
 alias so="source $HOME/.zshrc"
 # GIT
 alias gst="git status"
@@ -34,7 +35,7 @@ alias owez="nvim $HOME/zsh/.wezterm.lua"
 alias lls="ls -h -f"
 alias llc="colorls -lA --sd"
 alias os="nvim $HOME/projects/localserver.sh"
-alias qn="cd $HOME/projects/tools/quick-note/"
+alias qn="cd $HOME/projects/quick-note/lua/quick-note/"
 alias c="clear"
 ## PROJECTS
 alias p="cd $HOME/projects/"
