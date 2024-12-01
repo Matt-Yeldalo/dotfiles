@@ -18,9 +18,10 @@ alias lvimconfig="cd $HOME/.config/lvim"
 alias onvim="nvim $HOME/.config/nvim/init.lua"
 alias np="cd $HOME/.config/nvim/lua/matt/plugins/"
 alias n="nvim"
-# ZSH
+# ZSH / BASH
 alias zshconfig="cd $HOME/zsh"
 alias ozsh="nvim $HOME/zsh/.zshrc"
+alias obash="nvim $HOME/.bashrc"
 alias so="source $HOME/.zshrc"
 # GIT
 alias gst="git status"
@@ -38,6 +39,7 @@ alias lls="ls -h -f"
 alias llc="colorls -lA --sd"
 alias os="nvim $HOME/projects/localserver.sh"
 alias qn="cd $HOME/projects/tools/quick-note/"
+alias ggems276="cd $HOME/dev/.rbenv/versions/2.7.6/lib/ruby/gems/2.7.0"
 alias c="clear"
 ## PROJECTS
 alias p="cd $HOME/projects/"
@@ -87,6 +89,11 @@ coutr(){
 cout(){
   gcc -o output $1
 }
+# $1 = Branch, $2 = File
+gdf(){ # git diff HEAD buzz-rails-5.2 -- Gemfile
+  printf "git diff HEAD $1 -- $2"
+  git diff HEAD $1 -- $2
+}
 gca() { # git commit -am "{message}"
   git commit -am "$1"
 }
@@ -114,6 +121,7 @@ add_path_tail "$HOME/.local/bin/lvim"
 add_path_tail "$HOME/.cargo/bin/"
 add_path_tail "$HOME/zig-linux-x86_64-0.14.0-dev.620+eab934814/"
 add_path_tail "$HOME/.zls/zls"
+add_path_tail "$HOME/watchman/built/bin/"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 eval "$($HOME/.rbenv/bin/rbenv init -)"
 eval "$(rbenv init - zsh)"

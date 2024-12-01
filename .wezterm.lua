@@ -19,32 +19,42 @@ config.window_frame = {
 
 config.keys = {
 	{
-		key = 'F1',
-		action = wezterm.action.TogglePaneZoomState
+		key = "F1",
+		action = wezterm.action.TogglePaneZoomState,
 	},
 	{
-		key = 'F2',
-		action = wezterm.action.ToggleFullScreen
-	}
+		key = "F2",
+		action = wezterm.action.ToggleFullScreen,
+	},
+	{
+		key = "UpArrow",
+		mods = "CTRL",
+		action = wezterm.action.ScrollByPage(-0.2),
+	},
+	{
+		key = "DownArrow",
+		mods = "CTRL",
+		action = wezterm.action.ScrollByPage(0.2),
+	},
 }
 
 config.audible_bell = "Disabled"
-config.colors = {
-ansi = { "#214969", "#E52E2E", "#44FFB1", "#FFE073", "#0FC5ED", "#a277ff", "#24EAF7", "#24EAF7" },
-brights = { "#214969", "#E52E2E", "#44FFB1", "#FFE073", "#A277FF", "#a277ff", "#24EAF7", "#24EAF7" },
-}
+-- config.colors = {
+-- 	ansi = { "#214969", "#E52E2E", "#44FFB1", "#FFE073", "#0FC5ED", "#a277ff", "#24EAF7", "#24EAF7" },
+-- 	brights = { "#214969", "#E52E2E", "#44FFB1", "#FFE073", "#A277FF", "#a277ff", "#24EAF7", "#24EAF7" },
+-- }
 
 config.color_scheme = "Afterglow (Gogh)"
 config.font = wezterm.font({
-family = "MartianMono Nerd Font",
-weight = "Medium",
+	family = "MartianMono Nerd Font",
+	weight = "Regular",
 })
-config.window_background_opacity = 0.9
+-- config.window_background_opacity = 0.9
 -- config.macos_window_background_blur = 8
 -- config.win32_system_backdrop = "Acrylic"
 -- config.win32_acrylic_accent_color = "#447799"
 config.bold_brightens_ansi_colors = true
-config.font_size = 14
+config.font_size = 12
 config.line_height = 1.2
 config.enable_tab_bar = false
 config.window_decorations = "TITLE | RESIZE"
