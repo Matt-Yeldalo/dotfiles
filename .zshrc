@@ -40,6 +40,7 @@ alias llc="colorls -lA --sd"
 alias os="nvim $HOME/projects/localserver.sh"
 alias ggems276="cd $HOME/dev/.rbenv/versions/2.7.6/lib/ruby/gems/2.7.0"
 alias qb="cd $HOME/projects/quickbench/"
+alias ggems276="cd $HOME/dev/.rbenv/versions/2.7.6/lib/ruby/gems/2.7.0"
 alias qn="cd $HOME/projects/quick-note/lua/quick-note/"
 alias c="clear"
 ## PROJECTS
