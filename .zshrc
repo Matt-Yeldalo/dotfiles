@@ -38,12 +38,8 @@ alias owez="nvim $HOME/zsh/.wezterm.lua"
 alias lls="ls -h -f"
 alias llc="colorls -lA --sd"
 alias os="nvim $HOME/projects/localserver.sh"
-<<<<<<< HEAD
-alias qn="cd $HOME/projects/tools/quick-note/"
 alias ggems276="cd $HOME/dev/.rbenv/versions/2.7.6/lib/ruby/gems/2.7.0"
-=======
 alias qn="cd $HOME/projects/quick-note/lua/quick-note/"
->>>>>>> master
 alias c="clear"
 ## PROJECTS
 alias p="cd $HOME/projects/"
