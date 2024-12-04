@@ -4,7 +4,7 @@ local config = wezterm.config_builder()
 -- config.default_domain = "WSL:Ubuntu"
 
 config.window_frame = {
-	font = wezterm.font({ family = "MartianMono Nerd Font", weight = "Bold" }),
+	font = wezterm.font({ family = "CommitMono", weight = "Bold" }),
 	inactive_titlebar_bg = "#353535",
 	active_titlebar_bg = "#2b2042",
 	inactive_titlebar_fg = "#cccccc",
