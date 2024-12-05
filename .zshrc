@@ -10,7 +10,7 @@ source $HOME/zsh/shell/themes/robbyrussell.zsh-theme
 source $HOME/.zsh/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
 source $HOME/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 source $HOME/.zsh/zsh-autocomplete/zsh-autocomplete.plugin.zsh
-# ALIAS
+# ALIAS - source work aliases
 source $HOME/.bash_aliases
 # NVIM / LVIM
 alias nvimconfig="cd $HOME/.config/nvim"
@@ -124,6 +124,7 @@ add_path_tail "$HOME/.cargo/bin/"
 add_path_tail "$HOME/zig-linux-x86_64-0.14.0-dev.620+eab934814/"
 add_path_tail "$HOME/.zls/zls"
 add_path_tail "$HOME/watchman/built/bin/"
+
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 eval "$($HOME/.rbenv/bin/rbenv init -)"
 eval "$(rbenv init - zsh)"
