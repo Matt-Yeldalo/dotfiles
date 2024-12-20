@@ -30,8 +30,11 @@ alias glog="git log --oneline --decorate --graph --parents"
 alias bat="batcat"
 alias b="batcat"
 # OTHER
+alias reloadfonts="fc-cache -f -v"
 alias wslcode="/mnt/c/Users/matt/AppData/Local/Programs/'Microsoft VS Code'/bin/code ."
 alias owez="nvim $HOME/zsh/.wezterm.lua"
+alias kitty="$HOME/.local/kitty.app/bin/kitty"
+alias okitty="nvim $HOME/.config/kitty/kitty.conf"
 alias lls="ls -h -f"
 alias llc="colorls -lA --sd"
 alias os="nvim $HOME/projects/localserver.sh"
@@ -50,6 +53,9 @@ fi
 alias l="ls -ltr -A"
 alias ll="ls -ltr -A"
 # FUNCTIONS
+kitty-reload() {
+    kill -SIGUSR1 $(pidof kitty)
+}
 tartar(){
   tar -xvf $1 
 }
