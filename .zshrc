@@ -1,10 +1,10 @@
 VIM="nvim"
 # LIBS
-source $HOME/zsh/shell/lib/theme-and-appearance.zsh
-source $HOME/zsh/shell/lib/async_prompt.zsh
-source $HOME/zsh/shell/lib/git.zsh
+source $HOME/dotfiles/shell/lib/theme-and-appearance.zsh
+source $HOME/dotfiles/shell/lib/async_prompt.zsh
+source $HOME/dotfiles/shell/lib/git.zsh
 # PLUGINS
-source $HOME/zsh/shell/themes/robbyrussell.zsh-theme
+source $HOME/dotfiles/shell/themes/robbyrussell.zsh-theme
 source $HOME/.zsh/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
 source $HOME/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 source $HOME/.zsh/zsh-autocomplete/zsh-autocomplete.plugin.zsh
@@ -16,8 +16,8 @@ alias onvim="nvim $HOME/.config/nvim/init.lua"
 alias np="cd $HOME/.config/nvim/lua/matt/plugins/"
 alias n="nvim"
 # ZSH
-alias zshconfig="cd $HOME/zsh"
-alias ozsh="nvim $HOME/zsh/.zshrc"
+alias zshconfig="cd $HOME/dotfiles"
+alias ozsh="nvim $HOME/dotfiles/.zshrc"
 alias obash="nvim $HOME/.bashrc"
 alias so="source $HOME/.zshrc"
 # GIT
@@ -32,9 +32,10 @@ alias b="batcat"
 # OTHER
 alias reloadfonts="fc-cache -f -v"
 alias wslcode="/mnt/c/Users/matt/AppData/Local/Programs/'Microsoft VS Code'/bin/code ."
-alias owez="nvim $HOME/zsh/.wezterm.lua"
+alias owez="nvim $HOME/dotfiles/.wezterm.lua"
 alias kitty="$HOME/.local/kitty.app/bin/kitty"
 alias okitty="nvim $HOME/.config/kitty/kitty.conf"
+alias oghostty="nvim $HOME/dotfiles/ghostty"
 alias lls="ls -h -f"
 alias llc="colorls -lA --sd"
 alias os="nvim $HOME/projects/localserver.sh"
