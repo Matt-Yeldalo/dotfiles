@@ -111,8 +111,10 @@ bindkey '^[[Z' autosuggest-accept  # shift + tab  | autosuggest
 export NVM_DIR="$HOME/.nvm"
 add_path_tail "$HOME/.local/bin/lvim"
 add_path_tail "$HOME/.cargo/bin/"
-add_path_tail "$HOME/zig-linux-x86_64-0.14.0-dev.620+eab934814/"
+# add_path_tail "$HOME/zig-linux-x86_64-0.14.0-dev.620+eab934814/"
+add_path_tail "$HOME/zig-linux-x86_64-0.13.0/"
 add_path_tail "$HOME/.zls/zls"
+add_path_tail "$HOME/.local/bin/ghostty"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 eval "$($HOME/.rbenv/bin/rbenv init -)"
 eval "$(rbenv init - zsh)"
