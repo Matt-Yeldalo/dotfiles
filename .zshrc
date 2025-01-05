@@ -12,9 +12,26 @@ source $HOME/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 source $HOME/.zsh/zsh-autocomplete/zsh-autocomplete.plugin.zsh
 # ALIAS - source work aliases
 source $HOME/.bash_aliases
+setopt EXTENDED_GLOB
+# Path Map
+# typeset -A path_map
+# path_file="$HOME/project_paths.txt"
+# # Init map
+# while IFS='=' read -r key value; do
+#   [[ -z "$key" || "$key" =~ ^# ]] && continue
+#
+#   echo "Inserting: $key = $value"
+#
+#   $path_map[$key]=$value
+# done < "$path_file"
+#
+# for key in "${(k)path_map}"; do 
+#   echo "Key: $key, Value: $path_map[$key]"
+# done
 # NVIM / LVIM
 alias nvimconfig="cd $HOME/.config/nvim"
 alias lvimconfig="cd $HOME/.config/lvim"
+alias otheme="nvim $HOME/.config/nvim/lua/matt/plugins/theme.lua"
 alias onvim="nvim $HOME/.config/nvim/init.lua"
 alias np="cd $HOME/.config/nvim/lua/matt/plugins/"
 alias n="nvim"
@@ -26,6 +43,7 @@ alias so="source $HOME/.zshrc"
 # GIT
 alias gst="git status"
 alias gbr="git branch -vv"
+alias lg="lazygit"
 alias gf="git fetch"
 alias gd="git diff"
 alias glog="git log --oneline --decorate --graph --parents"
@@ -33,14 +51,15 @@ alias glog="git log --oneline --decorate --graph --parents"
 alias bat="batcat"
 alias b="batcat"
 # OTHER
+alias ggems276="cd $HOME/dev/.rbenv/versions/2.7.6/lib/ruby/gems/2.7.0"
 alias wslcode="/mnt/c/Users/matt/AppData/Local/Programs/'Microsoft VS Code'/bin/code ."
 alias owez="nvim $HOME/zsh/.wezterm.lua"
+alias oalac="nvim $HOME/zsh/alacritty.toml"
+alias reload_fonts="sudo fc-cache -f -v"
 alias lls="ls -h -f"
 alias llc="colorls -lA --sd"
 alias os="nvim $HOME/projects/localserver.sh"
-alias ggems276="cd $HOME/dev/.rbenv/versions/2.7.6/lib/ruby/gems/2.7.0"
 alias qb="cd $HOME/projects/quickbench/"
-alias ggems276="cd $HOME/dev/.rbenv/versions/2.7.6/lib/ruby/gems/2.7.0"
 alias qn="cd $HOME/projects/quick-note/lua/quick-note/"
 alias c="clear"
 ## PROJECTS
@@ -61,6 +80,16 @@ alias l="ls -ltr -A"
 alias ll="ls -ltr -A"
 # alias wwconfig="nvim /mnt/c/Users/matt/.wezterm.lua"
 # FUNCTIONS
+# Override cd to automatically set wezterm tab title
+# exists?(){
+#  "${path_map[$1]+exists}"
+# }
+# cd(){
+#   # Normal functionality
+#   builtin cd "$@" || return
+#
+#   wezterm cli set-tab-title $(pwd)
+# }
 tartar(){
   tar -xvf $1 
 }
