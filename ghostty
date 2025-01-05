@@ -1,0 +1,9 @@
+shell-integration-features = no-cursor
+cursor-style = block
+window-inherit-font-size = false
+
+font-family = "Maple Mono NF"
+font-size = 29.0
+font-thicken = true
+
+

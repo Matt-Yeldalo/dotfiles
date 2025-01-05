@@ -2,11 +2,11 @@
 export PATH=$HOME/bin:/usr/local/bin:$PATH
 VIM="nvim"
 # LIBS
-source $HOME/zsh/shell/lib/theme-and-appearance.zsh
-source $HOME/zsh/shell/lib/async_prompt.zsh
-source $HOME/zsh/shell/lib/git.zsh
+source $HOME/dotfiles/shell/lib/theme-and-appearance.zsh
+source $HOME/dotfiles/shell/lib/async_prompt.zsh
+source $HOME/dotfiles/shell/lib/git.zsh
 # PLUGINS
-source $HOME/zsh/shell/themes/robbyrussell.zsh-theme
+source $HOME/dotfiles/shell/themes/robbyrussell.zsh-theme
 source $HOME/.zsh/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
 source $HOME/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 source $HOME/.zsh/zsh-autocomplete/zsh-autocomplete.plugin.zsh
@@ -35,9 +35,9 @@ alias otheme="nvim $HOME/.config/nvim/lua/matt/plugins/theme.lua"
 alias onvim="nvim $HOME/.config/nvim/init.lua"
 alias np="cd $HOME/.config/nvim/lua/matt/plugins/"
 alias n="nvim"
-# ZSH / BASH
-alias zshconfig="cd $HOME/zsh"
-alias ozsh="nvim $HOME/zsh/.zshrc"
+# ZSH
+alias zshconfig="cd $HOME/dotfiles"
+alias ozsh="nvim $HOME/dotfiles/.zshrc"
 alias obash="nvim $HOME/.bashrc"
 alias so="source $HOME/.zshrc"
 # GIT
@@ -51,11 +51,12 @@ alias glog="git log --oneline --decorate --graph --parents"
 alias bat="batcat"
 alias b="batcat"
 # OTHER
-alias ggems276="cd $HOME/dev/.rbenv/versions/2.7.6/lib/ruby/gems/2.7.0"
+alias reloadfonts="fc-cache -f -v"
 alias wslcode="/mnt/c/Users/matt/AppData/Local/Programs/'Microsoft VS Code'/bin/code ."
-alias owez="nvim $HOME/zsh/.wezterm.lua"
-alias oalac="nvim $HOME/zsh/alacritty.toml"
-alias reload_fonts="sudo fc-cache -f -v"
+alias owez="nvim $HOME/dotfiles/.wezterm.lua"
+alias kitty="$HOME/.local/kitty.app/bin/kitty"
+alias okitty="nvim $HOME/.config/kitty/kitty.conf"
+alias oghostty="nvim $HOME/dotfiles/ghostty"
 alias lls="ls -h -f"
 alias llc="colorls -lA --sd"
 alias os="nvim $HOME/projects/localserver.sh"
@@ -90,6 +91,9 @@ alias ll="ls -ltr -A"
 #
 #   wezterm cli set-tab-title $(pwd)
 # }
+kitty-reload() {
+    kill -SIGUSR1 $(pidof kitty)
+}
 tartar(){
   tar -xvf $1 
 }
@@ -150,10 +154,12 @@ bindkey '^[[Z' autosuggest-accept  # shift + tab  | autosuggest
 export NVM_DIR="$HOME/.nvm"
 add_path_tail "$HOME/.local/bin/lvim"
 add_path_tail "$HOME/.cargo/bin/"
-add_path_tail "$HOME/zig-linux-x86_64-0.14.0-dev.620+eab934814/"
+# add_path_tail "$HOME/zig-linux-x86_64-0.14.0-dev.620+eab934814/"
+add_path_tail "$HOME/zig-linux-x86_64-0.13.0/"
 add_path_tail "$HOME/.zls/zls"
 add_path_tail "$HOME/watchman/built/bin/"
 
+add_path_tail "$HOME/.local/bin/ghostty"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 eval "$($HOME/.rbenv/bin/rbenv init -)"
 eval "$(rbenv init - zsh)"
