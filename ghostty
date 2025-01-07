@@ -3,7 +3,9 @@ cursor-style = block
 window-inherit-font-size = false
 
 font-family = "Maple Mono NF"
-font-size = 29.0
+font-size = 15.0
 font-thicken = true
+
+theme = "arcoiris"
 
 
