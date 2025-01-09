@@ -57,6 +57,10 @@ alias ll="ls -ltr -A"
 kitty-reload() {
     kill -SIGUSR1 $(pidof kitty)
 }
+catgrep(){
+ printf "Running cat %s | grep %s\n" $1 $2
+ cat $1 | grep $2
+}
 tartar(){
   tar -xvf $1 
 }
@@ -76,7 +80,7 @@ mkdira(){
 zout(){
   basename=$(basename "$1" | cut -d. -f1)
   echo 
-  zig build-exe $1 && "./$basename"
+  zig build-exe $1 && "./$basename" $2
   echo
 }
 coutr(){
