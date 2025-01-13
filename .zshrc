@@ -19,6 +19,7 @@ alias n="nvim"
 alias dotfiles="cd $HOME/dotfiles/"
 alias zshconfig="cd $HOME/dotfiles"
 alias ozsh="nvim $HOME/dotfiles/.zshrc"
+alias otmux="nvim $HOME/.tmux.conf"
 alias obash="nvim $HOME/.bashrc"
 alias so="source $HOME/.zshrc"
 # GIT
