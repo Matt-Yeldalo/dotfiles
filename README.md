@@ -1,7 +1,7 @@
 # Setup
 
 1. Clone to ~
-2. E.g. `~/zsh`
+2. E.g. `~/dotfiles`
 
 ## Fonts
 
