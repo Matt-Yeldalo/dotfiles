@@ -16,6 +16,7 @@ alias onvim="nvim $HOME/.config/nvim/init.lua"
 alias np="cd $HOME/.config/nvim/lua/matt/plugins/"
 alias n="nvim"
 # ZSH
+alias dotfiles="cd $HOME/dotfiles/"
 alias zshconfig="cd $HOME/dotfiles"
 alias ozsh="nvim $HOME/dotfiles/.zshrc"
 alias obash="nvim $HOME/.bashrc"
