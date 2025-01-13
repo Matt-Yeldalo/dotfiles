@@ -1,11 +1,15 @@
-shell-integration-features = no-cursor
-cursor-style = block
-window-inherit-font-size = false
+shell-integration-features = "no-cursor"
+cursor-style = "block"
+window-inherit-font-size = "false"
 
 font-family = "JetBrainsMono Nerd Font"
 font-size = 15.0
 font-thicken = true
 
 theme = "arcoiris"
+background-opacity = "0.85"
 
+font-family = "MapleMonoNF"
+font-size = "16.0"
+font-thicken = "true"
 
