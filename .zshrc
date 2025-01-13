@@ -36,8 +36,10 @@ alias onvim="nvim $HOME/.config/nvim/init.lua"
 alias np="cd $HOME/.config/nvim/lua/matt/plugins/"
 alias n="nvim"
 # ZSH
+alias dotfiles="cd $HOME/dotfiles/"
 alias zshconfig="cd $HOME/dotfiles"
 alias ozsh="nvim $HOME/dotfiles/.zshrc"
+alias otmux="nvim $HOME/.tmux.conf"
 alias obash="nvim $HOME/.bashrc"
 alias so="source $HOME/.zshrc"
 # GIT
@@ -54,6 +56,7 @@ alias b="batcat"
 alias reloadfonts="fc-cache -f -v"
 alias wslcode="/mnt/c/Users/matt/AppData/Local/Programs/'Microsoft VS Code'/bin/code ."
 alias owez="nvim $HOME/dotfiles/.wezterm.lua"
+alias og="$HOME/ghostty/zig-out/bin/ghostty"
 alias kitty="$HOME/.local/kitty.app/bin/kitty"
 alias okitty="nvim $HOME/.config/kitty/kitty.conf"
 alias oghostty="nvim $HOME/dotfiles/ghostty"
@@ -94,6 +97,10 @@ alias ll="ls -ltr -A"
 kitty-reload() {
     kill -SIGUSR1 $(pidof kitty)
 }
+catgrep(){
+ printf "Running cat %s | grep %s\n" $1 $2
+ cat $1 | grep $2
+}
 tartar(){
   tar -xvf $1 
 }
@@ -113,7 +120,7 @@ mkdira(){
 zout(){
   basename=$(basename "$1" | cut -d. -f1)
   echo 
-  zig build-exe $1 && "./$basename"
+  zig build-exe $1 && "./$basename" $2
   echo
 }
 coutr(){
