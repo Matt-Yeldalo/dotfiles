@@ -48,6 +48,7 @@ alias c="clear"
 ## PROJECTS
 alias p="cd $HOME/projects/"
 alias p-lang="cd $HOME/projects/lang/"
+alias feed="cd $HOME/projects/feed-the-pets/"
 if alias ll>/dev/null; then 
   unalias ll
 fi
