@@ -94,6 +94,10 @@ alias ll="ls -ltr -A"
 #
 #   wezterm cli set-tab-title $(pwd)
 # }
+# A global find and replace of x to y
+find_and_replace(){
+  find . -type f -print0| xargs -0 sed -i "s/$1/$2/g"
+}
 kitty-reload() {
     kill -SIGUSR1 $(pidof kitty)
 }
