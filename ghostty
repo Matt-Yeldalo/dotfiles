@@ -2,9 +2,11 @@ shell-integration-features = "no-cursor"
 cursor-style = "block"
 window-inherit-font-size = "false"
 
+adjust-cell-height = "1"
+
 background-opacity = "0.85"
 
-font-family = "MapleMonoNF"
-font-size = "16.0"
+font-family = "VictorMonoNerdFontMono"
+font-size = "18.0"
 font-thicken = "true"
 
