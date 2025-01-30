@@ -10,8 +10,6 @@ source $HOME/dotfiles/shell/themes/robbyrussell.zsh-theme
 source $HOME/.zsh/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
 source $HOME/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 source $HOME/.zsh/zsh-autocomplete/zsh-autocomplete.plugin.zsh
-# ALIAS - source work aliases
-source $HOME/.bash_aliases
 # NVIM / LVIM
 alias nvimconfig="cd $HOME/.config/nvim"
 alias lvimconfig="cd $HOME/.config/lvim"
