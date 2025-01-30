@@ -43,6 +43,6 @@ theme: KanagawaDragon
 
 ## Tmux
 
-1. `ln -s {$HOME}/zsh/.tmux.conf {$HOME}/.tmux.conf`
+1. `ln -s {PATH_TO_DOTFILES}/dotfiles/.tmux.conf {$HOME}/.tmux.conf`
 2. `tmux`
 3. `prefix I` to install plugins
