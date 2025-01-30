@@ -1,3 +1,5 @@
+# If you come from bash you might have to change your $PATH.
+export PATH=$HOME/bin:/usr/local/bin:$PATH
 VIM="nvim"
 # LIBS
 source $HOME/dotfiles/shell/lib/theme-and-appearance.zsh
@@ -8,7 +10,8 @@ source $HOME/dotfiles/shell/themes/robbyrussell.zsh-theme
 source $HOME/.zsh/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
 source $HOME/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 source $HOME/.zsh/zsh-autocomplete/zsh-autocomplete.plugin.zsh
-# ALIAS
+# ALIAS - source work aliases
+source $HOME/.bash_aliases
 # NVIM / LVIM
 alias nvimconfig="cd $HOME/.config/nvim"
 alias lvimconfig="cd $HOME/.config/lvim"
@@ -58,6 +61,7 @@ if alias l>/dev/null; then
 fi
 alias l="ls -ltr -A"
 alias ll="ls -ltr -A"
+# alias wwconfig="nvim /mnt/c/Users/matt/.wezterm.lua"
 # FUNCTIONS
 kitty-reload() {
     kill -SIGUSR1 $(pidof kitty)
@@ -95,6 +99,11 @@ coutr(){
 }
 cout(){
   gcc -o output $1
+}
+# $1 = Branch, $2 = File
+gdf(){ # git diff HEAD buzz-rails-5.2 -- Gemfile
+  printf "git diff HEAD $1 -- $2"
+  git diff HEAD $1 -- $2
 }
 gca() { # git commit -am "{message}"
   git commit -am "$1"
