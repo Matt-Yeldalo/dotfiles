@@ -34,6 +34,7 @@ alias gd="git diff"
 alias bat="batcat"
 alias b="batcat"
 # OTHER
+alias reloadendwise="git cherry-pick ad5ab41122a0b84f27101f1b5e6e55a681f84b2f"
 alias reloadfonts="fc-cache -f -v"
 alias oghostty="nvim $HOME/dotfiles/ghostty"
 alias wslcode="/mnt/c/Users/matt/AppData/Local/Programs/'Microsoft VS Code'/bin/code ."
