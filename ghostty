@@ -1,13 +1,14 @@
 shell-integration-features = "no-cursor"
 cursor-style = "block"
-window-inherit-font-size = "false"
 
-adjust-cell-height = "1"
+window-inherit-font-size = false
+gtk-titlebar = false
 
-background-opacity = "0.85"
+adjust-cell-height = 1
+
+background-opacity = 0.85
 
 font-family = "MapleMonoNF"
 font-style = "Medium"
-font-size = "16.0"
-font-thicken = "true"
-
+font-size = 16.0
+font-thicken = true

@@ -39,6 +39,7 @@ alias n="nvim"
 alias zshconfig="cd $HOME/dotfiles"
 alias dotfiles="cd $HOME/dotfiles/"
 alias otmux="nvim $HOME/.tmux.conf"
+alias ssh='TERM=xterm-256color \ssh'
 alias obash="nvim $HOME/.bashrc"
 alias ozsh="nvim $HOME/dotfiles/.zshrc"
 alias so="source $HOME/.zshrc"
