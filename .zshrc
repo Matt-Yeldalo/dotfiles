@@ -32,6 +32,7 @@ setopt EXTENDED_GLOB
 alias nvimconfig="cd $HOME/.config/nvim"
 alias lvimconfig="cd $HOME/.config/lvim"
 alias otheme="nvim $HOME/.config/nvim/lua/matt/plugins/theme.lua"
+alias gnvimlazy="cd $HOME/.local/share/nvim/lazy"
 alias onvim="nvim $HOME/.config/nvim/init.lua"
 alias np="cd $HOME/.config/nvim/lua/matt/plugins/"
 alias n="nvim"
