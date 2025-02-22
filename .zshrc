@@ -139,7 +139,7 @@ add_path_tail "GTK_USE_PORTAL=0"
 add_path_tail "GDK_BACKEND=x11"
 add_path_tail "DISPLAY=$(hostname).local:0"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-eval "$($HOME/.rbenv/bin/rbenv init -)"
+# eval "$($HOME/.rbenv/bin/rbenv init -)"
 eval "$(rbenv init - zsh)"
 # assuming that rbenv was installed to `~/.rbenv`
 FPATH=$HOME/.rbenv/completions:"$FPATH"
