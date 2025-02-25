@@ -1,10 +1,12 @@
+theme = onedarkpro
+
 shell-integration-features = "no-cursor"
 cursor-style = "block"
 window-inherit-font-size = "false"
 
 adjust-cell-height = "1"
 
-background-opacity = "0.85"
+background-opacity = "0.9"
 
 font-family = "Maple Mono Normal NF"
 font-style = "Medium"
