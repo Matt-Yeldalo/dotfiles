@@ -51,6 +51,7 @@ alias os="nvim $HOME/projects/localserver.sh"
 alias qb="cd $HOME/projects/quickbench/"
 alias qn="cd $HOME/projects/quick-note/lua/quick-note/"
 alias c="clear"
+alias -- -="cd -"
 ## PROJECTS
 alias p="cd $HOME/projects/"
 alias p-lang="cd $HOME/projects/lang/"
