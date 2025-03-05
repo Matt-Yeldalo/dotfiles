@@ -63,6 +63,7 @@ if alias l>/dev/null; then
   unalias l
 fi
 alias l="ls -ltr -A"
+alias lS="l -h -sS"
 alias ll="ls -ltr -A"
 # alias wwconfig="nvim /mnt/c/Users/matt/.wezterm.lua"
 # FUNCTIONS
