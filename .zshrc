@@ -170,9 +170,12 @@ export NVM_DIR="$HOME/.nvm"
 add_path_tail "$HOME/.local/bin/lvim"
 add_path_tail "$HOME/.cargo/bin/"
 # add_path_tail "$HOME/zig-linux-x86_64-0.14.0-dev.620+eab934814/"
-add_path_tail "$HOME/zig-linux-x86_64-0.13.0/"
+add_path_tail "$HOME/zig-linux-x86_64-0.13.0"
+# add_path_tail "$HOME/zig-linux-x86_64-0.14.0-dev.3367+1cc388d52"
 add_path_tail "$HOME/.zls/zls"
 add_path_tail "$HOME/watchman/built/bin/"
+
+add_path_tail "$HOME/ghostty/zig-out/bin"
 
 add_path_tail "$HOME/.local/bin/ghostty"
 add_path_tail "GTK_USE_PORTAL=0"
