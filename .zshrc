@@ -56,6 +56,7 @@ alias bat="batcat"
 alias b="batcat"
 # OTHER
 alias reloadendwise="git cherry-pick ad5ab41122a0b84f27101f1b5e6e55a681f84b2f"
+alias addgoogledns="echo 'Adding google dns nameserver to /etc/resolv.conf' && echo 'nameserver 8.8.4.4 \nnameserver 4.4.4.4' | sudo tee -a /etc/resolv.conf"
 alias reloadfonts="fc-cache -f -v"
 alias oghostty="nvim $HOME/dotfiles/ghostty"
 alias wslcode="/mnt/c/Users/matt/AppData/Local/Programs/'Microsoft VS Code'/bin/code ."
@@ -70,6 +71,7 @@ alias os="nvim $HOME/projects/localserver.sh"
 alias qb="cd $HOME/projects/quickbench/"
 alias qn="cd $HOME/projects/quick-note/lua/quick-note/"
 alias c="clear"
+alias -- -="cd -"
 ## PROJECTS
 alias p="cd $HOME/projects/"
 alias p-lang="cd $HOME/projects/lang/"
@@ -85,6 +87,7 @@ if alias l>/dev/null; then
   unalias l
 fi
 alias l="ls -ltr -A"
+alias lS="l -h -sS"
 alias ll="ls -ltr -A"
 # alias wwconfig="nvim /mnt/c/Users/matt/.wezterm.lua"
 # FUNCTIONS
@@ -182,8 +185,8 @@ add_path_tail "GTK_USE_PORTAL=0"
 add_path_tail "GDK_BACKEND=x11"
 add_path_tail "DISPLAY=$(hostname).local:0"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-# eval "$($HOME/.rbenv/bin/rbenv init -)"
-eval "$(rbenv init - zsh)"
+eval "$($HOME/.rbenv/bin/rbenv init -)"
+# eval "$(rbenv init - zsh)"
 # assuming that rbenv was installed to `~/.rbenv`
 FPATH=$HOME/.rbenv/completions:"$FPATH"
 
