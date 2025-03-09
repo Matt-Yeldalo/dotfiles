@@ -142,6 +142,10 @@ coutr(){
 cout(){
   gcc -o output $1
 }
+psg(){
+  printf "ps aux | grep $1\n"
+  ps aux | grep $1
+}
 # $1 = Branch, $2 = File
 gdf(){ # git diff HEAD buzz-rails-5.2 -- Gemfile
   printf "git diff HEAD $1 -- $2"
