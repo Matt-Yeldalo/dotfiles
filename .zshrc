@@ -112,6 +112,10 @@ catgrep(){
  printf "Running cat %s | grep %s\n" $1 $2
  cat $1 | grep $2
 }
+groutes(){
+ printf "rails routes | grep $1\n"
+ rails routes | grep $1
+}
 tartar(){
   tar -xvf $1 
 }
