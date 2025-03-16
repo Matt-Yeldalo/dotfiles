@@ -10,9 +10,9 @@ adjust-cell-height = 1
 
 background-opacity = "0.9"
 
-font-family = "Maple Mono Normal NF"
+font-family = "Maple Mono NF"
 font-style = "Medium"
 font-size = "14.0"
 font-thicken = "true"
-font-feature = "feat on"
+font-feature = "feat=1"
 
