@@ -14,6 +14,7 @@ source $HOME/.zsh/zsh-autocomplete/zsh-autocomplete.plugin.zsh
 alias nvimconfig="cd $HOME/.config/nvim"
 alias lvimconfig="cd $HOME/.config/lvim"
 alias gnvimlazy="cd $HOME/.local/share/nvim/lazy"
+alias gnvimlog="cd $HOME/.local/state/nvim/"
 alias onvim="nvim $HOME/.config/nvim/init.lua"
 alias np="cd $HOME/.config/nvim/lua/matt/plugins/"
 alias n="nvim"
@@ -103,6 +104,14 @@ coutr(){
 }
 cout(){
   gcc -o output $1
+}
+sus(){
+  printf "sudo systemctl $1 $2"
+  sudo systemctl $1 $2
+}
+psg(){
+  printf "ps aux | grep $1"
+  ps aux | grep $1
 }
 # $1 = Branch, $2 = File
 gdf(){ # git diff HEAD buzz-rails-5.2 -- Gemfile
