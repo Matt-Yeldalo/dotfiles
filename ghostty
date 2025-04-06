@@ -6,7 +6,7 @@ cursor-style = "block"
 window-inherit-font-size = false
 gtk-titlebar = false
 
-adjust-cell-height = 1
+adjust-cell-height = "15%"
 
 background-opacity = "0.9"
 
@@ -14,5 +14,5 @@ font-family = "Maple Mono NF"
 font-style = "Medium"
 font-size = "14.0"
 font-thicken = "true"
-font-feature = "feat=1"
+font-feature = "feat on"
 
