@@ -57,6 +57,8 @@ alias -- -="cd -"
 alias p="cd $HOME/projects/"
 alias p-lang="cd $HOME/projects/lang/"
 alias feed="cd $HOME/projects/feed-the-pets/"
+alias flashcards="cd $HOME/projects/flashcards/"
+alias organise="cd $HOME/projects/organise-my-life/"
 if alias ll>/dev/null; then 
   unalias ll
 fi
