@@ -152,7 +152,7 @@ sus(){
   sudo systemctl $1 $2
 }
 psg(){
-  printf "ps aux | grep $1"
+  printf "ps aux | grep $1 \n"
   ps aux | grep $1
 }
 # $1 = Branch, $2 = File
