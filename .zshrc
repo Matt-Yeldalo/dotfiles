@@ -93,6 +93,10 @@ toucho(){
 mkdira(){
   mkdir $1 && cd $1
 }
+groutes(){
+ printf "rails routes | grep $1\n"
+ rails routes | grep $1
+}
 zout(){
   basename=$(basename "$1" | cut -d. -f1)
   echo 
