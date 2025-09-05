@@ -21,6 +21,7 @@ alias n="nvim"
 # ZSH
 alias zshconfig="cd $HOME/dotfiles"
 alias dotfiles="cd $HOME/dotfiles/"
+alias ofish="nvim $HOME/.config/fish/config.fish"
 alias otmux="nvim $HOME/.tmux.conf"
 alias obash="nvim $HOME/.bashrc"
 alias ozsh="nvim $HOME/dotfiles/.zshrc"
@@ -157,12 +158,22 @@ add_path_tail "GDK_BACKEND=x11"
 add_path_tail "DISPLAY=$(hostname).local:0"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 # eval "$($HOME/.rbenv/bin/rbenv init -)"
+if command -v rbenv 1>/dev/null 2>&1; then
+    eval "$(rbenv init -)"
+  else
+    if [ -d "$HOME/.rbenv" ]; then
+      export PATH="$HOME/.rbenv/bin:$PATH"
+      eval "$(rbenv init -)"
+    fi
+fi
+
 eval "$(rbenv init - zsh)"
 # assuming that rbenv was installed to `~/.rbenv`
 FPATH=$HOME/.rbenv/completions:"$FPATH"
 
 autoload -U compinit
 compinit
+stty -ixon # disable ctrl-s to freeze terminal
 
 # Generated for envman. Do not edit.
 [ -s "$HOME/.config/envman/load.sh" ] && source "$HOME/.config/envman/load.sh"
