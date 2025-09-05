@@ -19,8 +19,23 @@
 <br>
 
 > [!NOTE]
-> All the information about the Fish setup is on the documentation website: https://dotfiles-docs.vercel.app/app-confs/fish.html
+> All the information about the Fish setup is on the documentation website: <https://dotfiles-docs.vercel.app/app-confs/fish.html>
 
 # Personal Install
 
 - symlink dir ~/.config/fish -> dotfiles/fish
+
+install:
+
+- fish
+- eza
+- fisher
+- starship
+- delta
+- vivid
+
+todo:
+
+- [ ] improve tmux
+- [ ] add scrolling tmux
+- [ ] fix tmux vim mode
