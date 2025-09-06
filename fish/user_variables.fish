@@ -29,6 +29,7 @@ set -gx PATH $HOME/.nvm/versions/node/v20.13.1/bin $PATH
 set -gx PATH $HOME/.cargo/bin $PATH
 set -gx PATH $HOME/zig-linux-x86_64-0.13.0 $PATH
 set -gx PATH $HOME/.zls $PATH
+set -gx PATH $HOME/.atuin/bin $PATH
 
 # # XDG Directories
 # set -xg XDG_CONFIG_HOME $HOME/.config
