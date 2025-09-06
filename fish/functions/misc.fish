@@ -121,12 +121,16 @@ function dotfiles --description 'Navigate to dotfiles'
 end
 
 # Edit config functions
+function ofish --description 'Edit fish config'
+    nvim $HOME/.config/fish/config.fish
+end
+
 function onvim --description 'Edit neovim config'
     nvim $HOME/.config/nvim/init.lua
 end
 
 function otmux --description 'Edit tmux config'
-    nvim $HOME/.tmux.conf
+    nvim $HOME/dotfiles/tmux
 end
 
 function obash --description 'Edit bash config'

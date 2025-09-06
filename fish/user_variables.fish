@@ -77,7 +77,6 @@ set -xg PAGER bat
 set -xg FZF_DEFAULT_COMMAND fd
 set -xg FZF_DEFAULT_OPTS '--height=90% --layout=reverse --info=inline --border rounded --margin=1 --padding=1 --color=bg+:#363a4f,bg:#24273a,spinner:#f4dbd6,hl:#ed8796,fg:#cad3f5,header:#ed8796,info:#b7bdf8,pointer:#f4dbd6,marker:#b7bdf8,fg+:#cad3f5,prompt:#b7bdf8,hl+:#ed8796,border:#6e738d,label:#cad3f5 --bind=ctrl-u:preview-half-page-up --bind=ctrl-d:preview-half-page-down --bind="ctrl-y:execute-silent(printf {} | cut -f 2- | wl-copy --trim-newline)" --bind=alt-j:down+down+down+down+down --bind=alt-k:up+up+up+up+up'
 set -xg _ZO_FZF_OPTS '--height=90% --layout=reverse --info=inline --border rounded --margin=1 --padding=1 --color=bg+:#363a4f,bg:#24273a,spinner:#f4dbd6,hl:#ed8796,fg:#cad3f5,header:#ed8796,info:#b7bdf8,pointer:#f4dbd6,marker:#b7bdf8,fg+:#cad3f5,prompt:#b7bdf8,hl+:#ed8796,border:#6e738d,label:#cad3f5 --bind=ctrl-u:preview-half-page-up'
-# set -xg _ZO_FZF_OPTS $FZF_DEFAULT_OPTS '--preview "{$fzf_preview_dir_cmd} {2}"'
 set -xg fzf_preview_dir_cmd eza --long --header --icons --all --color=always --group-directories-first --hyperlink
 set -xg fzf_fd_opts --hidden --color=always
 
