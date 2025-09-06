@@ -39,3 +39,5 @@ todo:
 - [ ] improve tmux
 - [ ] add scrolling tmux
 - [ ] fix tmux vim mode
+- [ ] nvim tabs
+

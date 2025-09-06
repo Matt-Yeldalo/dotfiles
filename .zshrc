@@ -10,9 +10,8 @@ source $HOME/dotfiles/shell/themes/robbyrussell.zsh-theme
 source $HOME/.zsh/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
 source $HOME/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 source $HOME/.zsh/zsh-autocomplete/zsh-autocomplete.plugin.zsh
-# NVIM / LVIM
+# NVIM
 alias nvimconfig="cd $HOME/.config/nvim"
-alias lvimconfig="cd $HOME/.config/lvim"
 alias gnvimlazy="cd $HOME/.local/share/nvim/lazy"
 alias gnvimlog="cd $HOME/.local/state/nvim/"
 alias onvim="nvim $HOME/.config/nvim/init.lua"
@@ -134,29 +133,36 @@ catr() {
   tail -n "+$1" $3 | head -n "$(($2 - $1 +1))"
 }
 add_path_tail() {
-  if [[ "$PATH" != "$1" ]]; then
-    export PATH=$PATH:$1
+  if [[ ":$PATH:" != *":$1:"* ]]; then
+      export PATH="$PATH:$1"
   fi
 }
+
 add_path_head() {
-  if [[ "$PATH" != "$1" ]]; then
-    export PATH=$1:$PATH
+  if [[ ":$PATH:" != *":$1:"* ]]; then
+      export PATH="$1:$PATH"
   fi
+}
+path_show() {
+    echo $PATH | tr ':' '\n'
+}
+remove_from_path() {
+    PATH=$(echo $PATH | tr ':' '\n' | grep -v "$1" | tr '\n' ':' | sed 's/:$//')
 }
 bindkey '^I'   complete-word       # tab          | complete
 bindkey '^[[Z' autosuggest-accept  # shift + tab  | autosuggest
 # PATH
-export NVM_DIR="$HOME/.nvm"
-add_path_tail "$HOME/.local/bin/lvim"
 add_path_tail "$HOME/.cargo/bin/"
 # add_path_tail "$HOME/zig-linux-x86_64-0.14.0-dev.620+eab934814/"
 add_path_tail "$HOME/zig-linux-x86_64-0.13.0/"
-add_path_tail "$HOME/.zls/zls"
-add_path_tail "$HOME/.local/bin/ghostty"
-add_path_tail "GTK_USE_PORTAL=0"
-add_path_tail "GDK_BACKEND=x11"
-add_path_tail "DISPLAY=$(hostname).local:0"
+add_path_tail "$HOME/.zls"
+
+export NVM_DIR="$HOME/.nvm"
+# export GTK_USE_PORTAL="0"
+# export GDK_BACKEND="x11"
+# export DISPLAY="$(hostname).local:0"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+
 # eval "$($HOME/.rbenv/bin/rbenv init -)"
 if command -v rbenv 1>/dev/null 2>&1; then
     eval "$(rbenv init -)"
