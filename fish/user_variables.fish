@@ -1,28 +1,34 @@
 # Preserve PATH from parent shell if it exists
-# if test -n "$ORIG_PATH"
-#     set -gx PATH (echo $ORIG_PATH | tr ':' '\n')
-# else if test -n "$PATH"
-#     # Store original PATH when first starting fish
-#     set -gx ORIG_PATH (string join : $PATH)
-# end
+if test -n "$ORIG_PATH"
+    set -gx PATH (echo $ORIG_PATH | tr ':' '\n')
+else if test -n "$PATH"
+    # Store original PATH when first starting fish
+    set -gx ORIG_PATH (string join : $PATH)
+end
+
+# Add standard directories to PATH if not already present
+if not contains /bin $PATH
+    set -gx PATH $PATH /bin
+end
+
+if not contains /usr/bin $PATH
+    set -gx PATH $PATH /usr/bin
+end
 
 # Add your specific paths here
-# set -gx PATH $HOME/.local/share/nvim/mason/bin $PATH
-# set -gx PATH $HOME/.local/share/pnpm $PATH
-# set -gx PATH $HOME/.yarn/bin $PATH
-# set -gx PATH $HOME/.local/share/npm/bin $PATH
-# set -gx PATH $HOME/.local/share/bob/nvim-bin $PATH
-# set -gx PATH $HOME/.local/share/bun/bin $PATH
-# set -gx PATH /usr/lib/go/bin $PATH
-# set -gx PATH /usr/lib/rustup/bin $PATH
-# set -gx PATH $HOME/.local/share/cargo/bin $PATH
-# set -gx PATH $HOME/.local/share/go/bin $PATH
-# set -gx PATH $HOME/.local/bin $PATH
-# set -gx PATH $HOME/.rbenv/shims $PATH
-# set -gx PATH $HOME/.nvm/versions/node/v20.13.1/bin $PATH
-# set -gx PATH $HOME/.cargo/bin $PATH
-# set -gx PATH $HOME/zig-linux-x86_64-0.13.0 $PATH
-# set -gx PATH $HOME/.zls/zls $PATH
+set -gx PATH $HOME/.local/share/nvim/mason/bin $PATH
+set -gx PATH $HOME/.local/share/matt/nvim-bin $PATH
+set -gx PATH $HOME/.local/share/bun/bin $PATH
+set -gx PATH /usr/lib/go/bin $PATH
+set -gx PATH /usr/lib/rustup/bin $PATH
+set -gx PATH $HOME/.local/share/cargo/bin $PATH
+set -gx PATH $HOME/.local/share/go/bin $PATH
+set -gx PATH $HOME/.local/bin $PATH
+set -gx PATH $HOME/.rbenv/shims $PATH
+set -gx PATH $HOME/.nvm/versions/node/v20.13.1/bin $PATH
+set -gx PATH $HOME/.cargo/bin $PATH
+set -gx PATH $HOME/zig-linux-x86_64-0.13.0 $PATH
+set -gx PATH $HOME/.zls $PATH
 
 # # XDG Directories
 # set -xg XDG_CONFIG_HOME $HOME/.config
@@ -44,21 +50,21 @@
 # set -xg HISTFILE $XDG_STATE_HOME/bash/history
 #
 # # Path
-# fish_add_path $XDG_BIN_HOME
-# fish_add_path $XDG_BIN_HOME/color-scripts/
-# fish_add_path $GOPATH/bin
-# fish_add_path $CARGO_HOME/bin
-# fish_add_path $XDG_SCRIPT_HOME
-# fish_add_path /usr/local/bin
-# fish_add_path /usr/local/sbin
-# fish_add_path /usr/bin
-# fish_add_path /usr/sbin
-# fish_add_path /bin
-# fish_add_path /sbin
-# fish_add_path /usr/lib/rustup/bin
-# fish_add_path /usr/lib/go/bin
-# fish_add_path $XDG_DATA_HOME/npm/bin
-# fish_add_path $XDG_DATA_HOME/nvim/mason/bin
+fish_add_path $XDG_BIN_HOME
+fish_add_path $XDG_BIN_HOME/color-scripts/
+fish_add_path $GOPATH/bin
+fish_add_path $CARGO_HOME/bin
+fish_add_path $XDG_SCRIPT_HOME
+fish_add_path /usr/local/bin
+fish_add_path /usr/local/sbin
+fish_add_path /usr/bin
+fish_add_path /usr/sbin
+fish_add_path /bin
+fish_add_path /sbin
+fish_add_path /usr/lib/rustup/bin
+fish_add_path /usr/lib/go/bin
+fish_add_path $XDG_DATA_HOME/npm/bin
+fish_add_path $XDG_DATA_HOME/nvim/mason/bin
 
 # Editor
 set -xg EDITOR nvim

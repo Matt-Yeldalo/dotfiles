@@ -234,18 +234,6 @@ function kitty --description 'Launch kitty terminal'
     $HOME/.local/kitty.app/bin/kitty $argv
 end
 
-function owez --description 'Edit wezterm config'
-    nvim $HOME/dotfiles/.wezterm.lua
-end
-
-function lls --description 'List files with size and hidden'
-    ls -h -f $argv
-end
-
-function llc --description 'Colorized detailed listing'
-    colorls -lA --sd $argv
-end
-
 function og --description 'Launch ghostty'
     $HOME/ghostty/zig-out/bin/ghostty $argv
 end

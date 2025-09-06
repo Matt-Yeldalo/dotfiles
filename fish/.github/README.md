@@ -33,6 +33,7 @@ install:
 - starship
 - delta
 - vivid
+- atuin
 
 todo:
 

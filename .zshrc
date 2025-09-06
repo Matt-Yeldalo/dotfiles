@@ -158,8 +158,8 @@ add_path_tail "$HOME/zig-linux-x86_64-0.13.0/"
 add_path_tail "$HOME/.zls"
 
 export NVM_DIR="$HOME/.nvm"
-# export GTK_USE_PORTAL="0"
-# export GDK_BACKEND="x11"
+export GTK_USE_PORTAL="0"
+export GDK_BACKEND="x11"
 # export DISPLAY="$(hostname).local:0"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 
@@ -186,3 +186,7 @@ stty -ixon # disable ctrl-s to freeze terminal
 
 autoload -Uz compinit && compinit 
 
+
+. "$HOME/.atuin/bin/env"
+
+eval "$(atuin init zsh)"
