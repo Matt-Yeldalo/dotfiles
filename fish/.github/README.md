@@ -35,7 +35,4 @@ install:
 - vivid
 - atuin
 
-todo:
-
-- [ ] nvim tabs
 
