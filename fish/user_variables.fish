@@ -16,6 +16,7 @@ if not contains /usr/bin $PATH
 end
 
 # Add your specific paths here
+set -gx PATH /usr/local/bin $PATH
 set -gx PATH $HOME/.local/share/nvim/mason/bin $PATH
 set -gx PATH $HOME/.local/share/matt/nvim-bin $PATH
 set -gx PATH $HOME/.local/share/bun/bin $PATH
@@ -32,6 +33,7 @@ set -gx PATH $HOME/.zls $PATH
 set -gx PATH $HOME/.atuin/bin $PATH
 
 # # XDG Directories
+set -xg XDG_RUNTIME_DIR $PREFIX/tmp
 # set -xg XDG_CONFIG_HOME $HOME/.config
 # set -xg XDG_CACHE_HOME $HOME/.cache
 # set -xg XDG_DATA_HOME $HOME/.local/share
