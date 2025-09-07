@@ -37,7 +37,5 @@ install:
 
 todo:
 
-- [ ] add scrolling tmux
-- [ ] fix tmux vim mode
 - [ ] nvim tabs
 
