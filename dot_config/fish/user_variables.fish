@@ -32,26 +32,27 @@ set -gx PATH $HOME/.zls $PATH
 set -gx PATH $HOME/.atuin/bin $PATH
 set -gx PATH $HOME/.nvm $PATH
 set -gx PATH $HOME/fzf/bin $PATH
+set -gx PATH /opt/homebrew/bin $PATH
 
 # # XDG Directories
 set -xg XDG_RUNTIME_DIR $PREFIX/tmp
 set -xg XDG_CONFIG_HOME $HOME/.config
-# set -xg XDG_CACHE_HOME $HOME/.cache
-# set -xg XDG_DATA_HOME $HOME/.local/share
-# set -xg XDG_STATE_HOME $HOME/.local/state
-# set -xg XDG_BIN_HOME $HOME/.local/bin
-# set -xg XDG_SCRIPT_HOME $HOME/.local/script
-#
-# # Respect XDG Specification
-# set -xg CONAN_USER_HOME $XDG_CONFIG_HOME
-# set -xg GOPATH $XDG_DATA_HOME/go
-# set -xg GOMODCACHE $XDG_CACHE_HOME/go/mod
-# set -xg RUSTUP_HOME $XDG_DATA_HOME/rustup
-# set -xg CARGO_HOME $XDG_DATA_HOME/cargo
-# set -xg SQLITE_HISTORY $XDG_DATA_HOME/sqlite_history
-# set -xg RIPGREP_CONFIG_PATH $HOME/.config/rg/.ripgreprc
-# set -xg STARSHIP_CONFIG $HOME/.config/starship/starship.toml
-# set -xg HISTFILE $XDG_STATE_HOME/bash/history
+set -xg XDG_CACHE_HOME $HOME/.cache
+set -xg XDG_DATA_HOME $HOME/.local/share
+set -xg XDG_STATE_HOME $HOME/.local/state
+set -xg XDG_BIN_HOME $HOME/.local/bin
+set -xg XDG_SCRIPT_HOME $HOME/.local/script
+
+# Respect XDG Specification
+set -xg CONAN_USER_HOME $XDG_CONFIG_HOME
+set -xg GOPATH $XDG_DATA_HOME/go
+set -xg GOMODCACHE $XDG_CACHE_HOME/go/mod
+set -xg RUSTUP_HOME $XDG_DATA_HOME/rustup
+set -xg CARGO_HOME $XDG_DATA_HOME/cargo
+set -xg SQLITE_HISTORY $XDG_DATA_HOME/sqlite_history
+set -xg RIPGREP_CONFIG_PATH $HOME/.config/rg/.ripgreprc
+set -xg STARSHIP_CONFIG $HOME/.config/starship/starship.toml
+set -xg HISTFILE $XDG_STATE_HOME/bash/history
 #
 # # Path
 fish_add_path $XDG_BIN_HOME
@@ -71,6 +72,7 @@ fish_add_path $XDG_DATA_HOME/npm/bin
 fish_add_path $XDG_DATA_HOME/nvim/mason/bin
 fish_add_path ~/.nvm
 fish_add_path ~/fzf/bin
+fish_add_path /opt/homebrew/bin
 
 # Editor
 set -xg EDITOR nvim
