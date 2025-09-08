@@ -190,3 +190,5 @@ autoload -Uz compinit && compinit
 . "$HOME/.atuin/bin/env"
 
 eval "$(atuin init zsh)"
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

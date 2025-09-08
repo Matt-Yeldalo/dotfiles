@@ -18,7 +18,6 @@ end
 # Add your specific paths here
 set -gx PATH /usr/local/bin $PATH
 set -gx PATH $HOME/.local/share/nvim/mason/bin $PATH
-set -gx PATH $HOME/.local/share/matt/nvim-bin $PATH
 set -gx PATH $HOME/.local/share/bun/bin $PATH
 set -gx PATH /usr/lib/go/bin $PATH
 set -gx PATH /usr/lib/rustup/bin $PATH
@@ -31,10 +30,12 @@ set -gx PATH $HOME/.cargo/bin $PATH
 set -gx PATH $HOME/zig-linux-x86_64-0.13.0 $PATH
 set -gx PATH $HOME/.zls $PATH
 set -gx PATH $HOME/.atuin/bin $PATH
+set -gx PATH $HOME/.nvm $PATH
+set -gx PATH $HOME/fzf/bin $PATH
 
 # # XDG Directories
 set -xg XDG_RUNTIME_DIR $PREFIX/tmp
-# set -xg XDG_CONFIG_HOME $HOME/.config
+set -xg XDG_CONFIG_HOME $HOME/.config
 # set -xg XDG_CACHE_HOME $HOME/.cache
 # set -xg XDG_DATA_HOME $HOME/.local/share
 # set -xg XDG_STATE_HOME $HOME/.local/state
@@ -68,6 +69,8 @@ fish_add_path /usr/lib/rustup/bin
 fish_add_path /usr/lib/go/bin
 fish_add_path $XDG_DATA_HOME/npm/bin
 fish_add_path $XDG_DATA_HOME/nvim/mason/bin
+fish_add_path ~/.nvm
+fish_add_path ~/fzf/bin
 
 # Editor
 set -xg EDITOR nvim
