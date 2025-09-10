@@ -1,0 +1,6 @@
+^\.git$
+^\.gitmodules$
+^README\.md$
+^LICENSE$
+^scripts$
+^\.DS_Store$

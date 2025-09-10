@@ -1,0 +1,17 @@
+[user]
+  name = Matt Yeldalo
+  email = matt.yeldalo@outlook.com
+
+[core]
+  compression = 9
+  preloadindex = true
+
+[status]
+  branch = true
+  showStash = true
+  showUntrackedFiles = all
+
+[diff]
+  context = 3
+  renames = copies
+  interHunkContext = 10
