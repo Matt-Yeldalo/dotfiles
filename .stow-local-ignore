@@ -1,6 +1,9 @@
-^\.git$
-^\.gitmodules$
-^README\.md$
-^LICENSE$
-^scripts$
-^\.DS_Store$
+# Ignore repository-specific files
+.git
+.github
+.stow-local-ignore
+README.md
+LICENSE
+
+# OS-specific metadata
+.DS_Store
