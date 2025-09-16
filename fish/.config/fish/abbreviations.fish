@@ -1,2 +1,2 @@
 abbr -a g git
-abbr -a c chezmoi
+abbr -a gs  'git status -sb'
