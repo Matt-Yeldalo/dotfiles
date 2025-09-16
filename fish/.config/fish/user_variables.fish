@@ -35,7 +35,7 @@ set -gx PATH $HOME/fzf/bin $PATH
 set -gx PATH /opt/homebrew/bin $PATH
 
 # # XDG Directories
-set -xg XDG_RUNTIME_DIR $PREFIX/tmp
+set -xg XDG_RUNTIME_DIR /run/user/1000
 set -xg XDG_CONFIG_HOME $HOME/.config
 set -xg XDG_CACHE_HOME $HOME/.cache
 set -xg XDG_DATA_HOME $HOME/.local/share
