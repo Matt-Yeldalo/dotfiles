@@ -62,8 +62,8 @@ style = "bold blue"
 # Directory entry
 [directory]
 read_only = " 󰌾 "
-# home_symbol = " "
 truncation_length = 3
+use_logical_path = false
 
 # [directory.substitutions]
 # "Documents" = "󰈙 "
@@ -77,7 +77,6 @@ truncation_length = 3
 
 # Custom entries
 [custom.neovim]
-command = 'bob ls | rg Used | awk "{print \$2}"' # shows output of command
 detect_folders = ["lua"]
 style = "green"
 format = "[ $output ]($style)"
