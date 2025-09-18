@@ -62,8 +62,7 @@ style = "bold blue"
 # Directory entry
 [directory]
 read_only = " 󰌾 "
-# truncation_length = 3
-truncation_length = 0
+truncation_length = 3
 use_logical_path = false
 # Don’t fishnet the middle dirs
 truncate_to_repo = false
