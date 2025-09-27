@@ -357,6 +357,9 @@ require('lazy').setup({
           mason = false,
           root_dir = require('lspconfig.util').root_pattern('Gemfile', '.git', '.'),
         },
+        css_variables = {
+          filetypes = { 'css', 'scss', 'sass', 'less' },
+        },
         zls = {
           cmd = { '/home/matt/.zls/zls' },
           root_dir = require('lspconfig.util').root_pattern('.git', 'build.zig', 'zls.json'),
