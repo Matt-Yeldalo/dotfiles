@@ -26,6 +26,7 @@ opt.splitright = true
 opt.splitbelow = true
 opt.timeoutlen = 400
 opt.path:append('**') -- enable :find recursive
+opt.completeopt = { 'menu', 'menuone', 'noinsert' }
 
 -- Use ripgrep for native grep if available
 if vim.fn.executable('rg') == 1 then
@@ -72,6 +73,7 @@ ensure(start_dir, 'noice.nvim', 'folke/noice.nvim')
 ensure(start_dir, 'LuaSnip', 'L3MON4D3/LuaSnip')
 ensure(start_dir, 'friendly-snippets', 'rafamadriz/friendly-snippets')
 ensure(start_dir, 'gitsigns.nvim', 'lewis6991/gitsigns.nvim')
+ensure(start_dir, 'copilot.vim', 'github/copilot.vim')
 
 -- Configure Oil (minimal)
 pcall(function()
@@ -173,6 +175,13 @@ pcall(function()
   require('nvim-web-devicons').setup({})
 end)
 
+-- GitHub Copilot (minimal): accept with Shift-Tab
+pcall(function()
+  vim.g.copilot_no_tab_map = true
+  vim.g.copilot_assume_mapped = true
+  vim.cmd([[imap <silent><script><expr> <S-Tab> copilot#Accept("\<CR>")]])
+end)
+
 -- LuaSnip + friendly-snippets (snippets for js, ruby, html, css/sass, erb)
 pcall(function()
   local ls = require('luasnip')
@@ -269,6 +278,19 @@ pcall(function()
     },
   })
 end)
+
+-- Completion keymaps (native popup menu + LSP omnifunc)
+-- Ctrl-n / Ctrl-p: next/prev item or trigger completion if none
+vim.keymap.set('i', '<C-n>', function()
+  return vim.fn.pumvisible() == 1 and '<C-n>' or '<C-x><C-o>'
+end, { expr = true, desc = 'Next completion or trigger' })
+vim.keymap.set('i', '<C-p>', function()
+  return vim.fn.pumvisible() == 1 and '<C-p>' or '<C-x><C-o>'
+end, { expr = true, desc = 'Prev completion or trigger' })
+-- Ctrl-y: accept when visible, otherwise trigger completion (requested behavior)
+vim.keymap.set('i', '<C-y>', function()
+  return vim.fn.pumvisible() == 1 and '<C-y>' or '<C-x><C-o>'
+end, { expr = true, desc = 'Accept or trigger completion' })
 
 ---------------------------
 -- 1) Useful autocmds     --
@@ -517,6 +539,25 @@ local function start_tsserver()
   })
 end
 
+-- CSS/SCSS/LESS LS
+local function start_cssls()
+  -- Try known command names
+  local cmd
+  if vim.fn.executable('vscode-css-language-server') == 1 then
+    cmd = { 'vscode-css-language-server', '--stdio' }
+  elseif vim.fn.executable('css-languageserver') == 1 then
+    cmd = { 'css-languageserver', '--stdio' }
+  else
+    return
+  end
+  start_lsp_if_available({
+    name = 'cssls',
+    cmd = cmd,
+    root_dir = function() return get_root({ 'package.json', '.git' }) end,
+    settings = {},
+  })
+end
+
 -- Lua LS (optional; handy if you edit Lua)
 local function start_lua_ls()
   start_lsp_if_available({
@@ -538,10 +579,11 @@ vim.api.nvim_create_autocmd('FileType', {
   callback = function(ev)
     local ft = ev.match
     if ft == 'ruby' then start_rubocop_lsp() end
-    if ft == 'eruby' then start_rubocop_lsp() end -- rubocop handles Ruby; ERB files often include Ruby
+    if ft == 'eruby' or ft == 'erb' then start_rubocop_lsp() end
     if ft == 'elixir' or ft == 'eelixir' or ft == 'heex' or ft == 'surface' then start_elixirls() end
     if ft == 'zig' then start_zls() end
     if ft == 'javascript' or ft == 'javascriptreact' or ft == 'typescript' or ft == 'typescriptreact' then start_tsserver() end
+    if ft == 'css' or ft == 'scss' or ft == 'sass' or ft == 'less' then start_cssls() end
     if ft == 'lua' then start_lua_ls() end
   end,
 })
@@ -615,6 +657,22 @@ local function format_erb()
   end
 end
 
+-- CSS/SCSS/SASS/LESS fallback: Prettier via stdin (uses file extension to pick parser)
+local function format_css_like_with_prettier()
+  if vim.fn.executable('prettier') ~= 1 then
+    vim.notify('Prettier not found in PATH', vim.log.levels.WARN)
+    return
+  end
+  local filename = vim.api.nvim_buf_get_name(0)
+  local cmd = { 'prettier', '--stdin-filepath', filename }
+  local out, code = run_system(cmd, buf_get_text())
+  if code == 0 and out and out ~= '' then
+    buf_replace_text(out)
+  else
+    vim.notify('Prettier formatting failed', vim.log.levels.WARN)
+  end
+end
+
 function _G.FormatBuffer()
   if lsp_can_format() then
     vim.lsp.buf.format({ async = true })
@@ -623,6 +681,9 @@ function _G.FormatBuffer()
   local ft = vim.bo.filetype
   if ft == 'ruby' then return format_ruby() end
   if ft == 'eruby' then return format_erb() end
+  if ft == 'css' or ft == 'scss' or ft == 'sass' or ft == 'less' then
+    return format_css_like_with_prettier()
+  end
   vim.notify('No formatter configured for ' .. ft, vim.log.levels.INFO)
 end
 
