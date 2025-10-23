@@ -197,6 +197,7 @@ pcall(function()
     history = true,
     updateevents = 'TextChanged,TextChangedI',
     enable_autosnippets = false,
+    dependencies = { 'rafamadriz/friendly-snippets' },
   })
   -- Load VSCode-format community snippets lazily
   require('luasnip.loaders.from_vscode').lazy_load()
@@ -249,7 +250,7 @@ pcall(function()
   require('nvim-treesitter.configs').setup({
     ensure_installed = {
       'bash', 'lua', 'vim', 'vimdoc', 'query',
-      'ruby', 'elixir', 'heex',
+      'ruby', 'elixir', 'heex', 'embedded_template',
       'zig', 'javascript', 'typescript',
       'html', 'css', 'json', 'yaml', 'markdown', 'markdown_inline',
     },
@@ -512,6 +513,14 @@ local function start_rubocop_lsp()
     on_attach = on_attach,
   })
 end
+-- Herb (ERB files)
+-- local function start_herb_ls()
+--   start_lsp_if_available({
+--     name = 'herb',
+--     cmd = { 'herb-language-server', '--stdio' },
+--     root_dir = rails_root(),
+--   })
+-- end
 
 -- Elixir LS
 local function start_elixirls()
@@ -587,7 +596,7 @@ vim.api.nvim_create_autocmd('FileType', {
   callback = function(ev)
     local ft = ev.match
     if ft == 'ruby' then start_rubocop_lsp() end
-    if ft == 'eruby' or ft == 'erb' then start_rubocop_lsp() end
+    -- if ft == 'eruby' or ft == 'erb' then start_herb_lsp() end
     if ft == 'elixir' or ft == 'eelixir' or ft == 'heex' or ft == 'surface' then start_elixirls() end
     if ft == 'zig' then start_zls() end
     if ft == 'javascript' or ft == 'javascriptreact' or ft == 'typescript' or ft == 'typescriptreact' then start_tsserver() end
