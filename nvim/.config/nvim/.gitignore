@@ -2,6 +2,7 @@ tags
 test.sh
 .luarc.json
 nvim
+site
 
 spell/
 lazy-lock.json

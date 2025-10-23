@@ -1,7 +1,3 @@
-[user]
-  name = Matt Yeldalo
-  email = matt.yeldalo@outlook.com
-
 [core]
   compression = 9
   preloadindex = true
@@ -15,3 +11,6 @@
   context = 3
   renames = copies
   interHunkContext = 10
+[user]
+	name = Mathew Yeldalo
+	email = mathewyeldalo@busways.com.au
