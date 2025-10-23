@@ -6,3 +6,7 @@ Check sources
 2. install stow
 3. `cd ~/dotfiles/`
 3. `stow -v -R -t ~ */`
+
+## Versions
+
+- node: v24.10.0

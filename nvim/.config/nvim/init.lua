@@ -74,6 +74,13 @@ ensure(start_dir, 'LuaSnip', 'L3MON4D3/LuaSnip')
 ensure(start_dir, 'friendly-snippets', 'rafamadriz/friendly-snippets')
 ensure(start_dir, 'gitsigns.nvim', 'lewis6991/gitsigns.nvim')
 ensure(start_dir, 'copilot.vim', 'github/copilot.vim')
+-- Completion + pairs
+ensure(start_dir, 'nvim-cmp', 'hrsh7th/nvim-cmp')
+ensure(start_dir, 'cmp-nvim-lsp', 'hrsh7th/cmp-nvim-lsp')
+ensure(start_dir, 'cmp-buffer', 'hrsh7th/cmp-buffer')
+ensure(start_dir, 'cmp-path', 'hrsh7th/cmp-path')
+ensure(start_dir, 'cmp_luasnip', 'saadparwaiz1/cmp_luasnip')
+ensure(start_dir, 'nvim-autopairs', 'windwp/nvim-autopairs')
 
 -- Configure Oil (minimal)
 pcall(function()
@@ -288,18 +295,57 @@ pcall(function()
   })
 end)
 
--- Completion keymaps (native popup menu + LSP omnifunc)
--- Ctrl-n / Ctrl-p: next/prev item or trigger completion if none
-vim.keymap.set('i', '<C-n>', function()
-  return vim.fn.pumvisible() == 1 and '<C-n>' or '<C-x><C-o>'
-end, { expr = true, desc = 'Next completion or trigger' })
-vim.keymap.set('i', '<C-p>', function()
-  return vim.fn.pumvisible() == 1 and '<C-p>' or '<C-x><C-o>'
-end, { expr = true, desc = 'Prev completion or trigger' })
--- Ctrl-y: accept when visible, otherwise trigger completion (requested behavior)
-vim.keymap.set('i', '<C-y>', function()
-  return vim.fn.pumvisible() == 1 and '<C-y>' or '<C-x><C-o>'
-end, { expr = true, desc = 'Accept or trigger completion' })
+-- nvim-autopairs (minimal)
+pcall(function()
+  require('nvim-autopairs').setup({
+    check_ts = true,
+    fast_wrap = {},
+  })
+end)
+
+-- Completion: nvim-cmp + LuaSnip, Ctrl-Y to accept/trigger, Ctrl-N/P navigate
+pcall(function()
+  local cmp = require('cmp')
+  local ls = require('luasnip')
+  cmp.setup({
+    snippet = {
+      expand = function(args) ls.lsp_expand(args.body) end,
+    },
+    window = {
+      completion = cmp.config.window.bordered(),
+      documentation = cmp.config.window.bordered(),
+    },
+    mapping = {
+      -- Ctrl-N / Ctrl-P: navigate when visible else open completion
+      ['<C-n>'] = cmp.mapping(function(fallback)
+        if cmp.visible() then cmp.select_next_item() else cmp.complete() end
+      end, { 'i', 's' }),
+      ['<C-p>'] = cmp.mapping(function(fallback)
+        if cmp.visible() then cmp.select_prev_item() else cmp.complete() end
+      end, { 'i', 's' }),
+      -- Ctrl-Y: confirm when visible else trigger completion (requested behavior)
+      ['<C-y>'] = cmp.mapping(function()
+        if cmp.visible() then cmp.confirm({ select = false }) else cmp.complete() end
+      end, { 'i', 's' }),
+      -- Tab keys untouched (you use Copilot <S-Tab>)
+      ['<CR>'] = cmp.mapping.confirm({ select = false }),
+    },
+    sources = cmp.config.sources({
+      { name = 'nvim_lsp' },
+      { name = 'luasnip' },
+      { name = 'path' },
+      { name = 'buffer' },
+    }),
+    experimental = { ghost_text = false },
+    completion = { completeopt = table.concat(vim.opt.completeopt:get(), ',') },
+    formatting = { fields = { 'abbr', 'menu' } },
+    preselect = cmp.PreselectMode.None,
+  })
+
+  -- nvim-autopairs integration: auto insert matching chars after confirmation
+  local ok_pairs, cmp_autopairs = pcall(require, 'nvim-autopairs.completion.cmp')
+  if ok_pairs then cmp.event:on('confirm_done', cmp_autopairs.on_confirm_done()) end
+end)
 
 ---------------------------
 -- 1) Useful autocmds     --
@@ -478,6 +524,16 @@ local function on_attach(_, bufnr)
   if not ok then end
 end
 
+-- Advertise enhanced completion capabilities (for nvim-cmp)
+local lsp_capabilities = (function()
+  local caps = vim.lsp.protocol.make_client_capabilities()
+  local ok, cmp_caps = pcall(require, 'cmp_nvim_lsp')
+  if ok and cmp_caps and cmp_caps.default_capabilities then
+    return cmp_caps.default_capabilities(caps)
+  end
+  return caps
+end)()
+
 -- Helper: start LSP if executable exists and not already attached
 local function start_lsp_if_available(opts)
   if vim.fn.executable(opts.cmd[1]) ~= 1 then return end
@@ -489,6 +545,7 @@ local function start_lsp_if_available(opts)
     cmd = opts.cmd,
     root_dir = root,
     on_attach = on_attach,
+    capabilities = lsp_capabilities,
     settings = opts.settings,
   })
 end
@@ -511,6 +568,7 @@ local function start_rubocop_lsp()
     cmd = cmd,
     root_dir = root,
     on_attach = on_attach,
+    capabilities = lsp_capabilities,
   })
 end
 -- Herb (ERB files)
