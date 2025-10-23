@@ -75,6 +75,25 @@ ensure(start_dir, 'friendly-snippets', 'rafamadriz/friendly-snippets')
 ensure(start_dir, 'gitsigns.nvim', 'lewis6991/gitsigns.nvim')
 ensure(start_dir, 'copilot.vim', 'github/copilot.vim')
 
+-- Install lazy.nvim for kickstart plugins
+local lazypath = vim.fn.stdpath('data') .. '/lazy/lazy.nvim'
+if not (vim.uv or vim.loop).fs_stat(lazypath) then
+  local lazyrepo = 'https://github.com/folke/lazy.nvim.git'
+  local out = vim.fn.system { 'git', 'clone', '--filter=blob:none', '--branch=stable', lazyrepo, lazypath }
+  if vim.v.shell_error ~= 0 then
+    vim.notify('Error cloning lazy.nvim:\n' .. out, vim.log.levels.ERROR)
+  end
+end
+vim.opt.rtp:prepend(lazypath)
+
+-- Load kickstart plugins with lazy.nvim
+pcall(function()
+  require('lazy').setup({
+    require 'kickstart.plugins.cmp',
+    require 'kickstart.plugins.autopairs',
+  })
+end)
+
 -- Configure Oil (minimal)
 pcall(function()
   require('oil').setup({
