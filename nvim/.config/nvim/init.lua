@@ -37,9 +37,12 @@ end
 ----------------------------------
 -- Plugins (native pack manager) --
 ----------------------------------
--- Install plugins into stdpath('config')/site/pack/min/start using git if missing
-local site = vim.fn.stdpath('config') .. '/site'
+-- Install plugins into stdpath('data')/site/pack/min/start using git if missing
+-- Rationale: keep plugin clones out of the dotfiles repo and in the data dir.
+local site = vim.fn.stdpath('data') .. '/site'
 vim.opt.packpath:prepend(site)
+
+local registered_plugins = {}
 
 local function ensure(start_dir, name, repo, opts)
   local install_path = start_dir .. '/' .. name
@@ -56,6 +59,7 @@ local function ensure(start_dir, name, repo, opts)
       vim.notify('Failed to install ' .. name .. ': ' .. out, vim.log.levels.ERROR)
     end
   end
+  table.insert(registered_plugins, { name = name, path = install_path })
 end
 
 local start_dir = site .. '/pack/min/start'
@@ -74,13 +78,111 @@ ensure(start_dir, 'LuaSnip', 'L3MON4D3/LuaSnip')
 ensure(start_dir, 'friendly-snippets', 'rafamadriz/friendly-snippets')
 ensure(start_dir, 'gitsigns.nvim', 'lewis6991/gitsigns.nvim')
 ensure(start_dir, 'copilot.vim', 'github/copilot.vim')
--- Completion + pairs
-ensure(start_dir, 'nvim-cmp', 'hrsh7th/nvim-cmp')
-ensure(start_dir, 'cmp-nvim-lsp', 'hrsh7th/cmp-nvim-lsp')
-ensure(start_dir, 'cmp-buffer', 'hrsh7th/cmp-buffer')
-ensure(start_dir, 'cmp-path', 'hrsh7th/cmp-path')
-ensure(start_dir, 'cmp_luasnip', 'saadparwaiz1/cmp_luasnip')
+-- Completion engine (blink) + pairs
+ensure(start_dir, 'blink.cmp', 'saghen/blink.cmp')
 ensure(start_dir, 'nvim-autopairs', 'windwp/nvim-autopairs')
+
+-- Helper: migrate any existing packs from config/site to data/site
+pcall(function()
+  local config_site = vim.fn.stdpath('config') .. '/site'
+  local data_site = vim.fn.stdpath('data') .. '/site'
+  local src = config_site .. '/pack/min/start'
+  local dst = data_site .. '/pack/min/start'
+  vim.fn.mkdir(dst, 'p')
+
+  vim.api.nvim_create_user_command('PackMigrateToData', function()
+    local entries = vim.fn.glob(src .. '/*', true, true)
+    if not entries or #entries == 0 then
+      vim.notify('No packs found under ' .. src, vim.log.levels.INFO)
+      return
+    end
+    local moved, skipped = 0, 0
+    for _, s in ipairs(entries) do
+      if vim.fn.isdirectory(s) == 1 then
+        local name = s:match('([^/]+)$')
+        local target = dst .. '/' .. name
+        if (vim.uv or vim.loop).fs_stat(target) then
+          skipped = skipped + 1
+        else
+          local ok = (vim.uv or vim.loop).fs_rename(s, target)
+          if ok then moved = moved + 1 else skipped = skipped + 1 end
+        end
+      end
+    end
+    vim.notify(string.format('Pack migrate: moved %d, skipped %d', moved, skipped), vim.log.levels.INFO)
+  end, { desc = 'Move packs from config/site to data/site' })
+end)
+
+-- Simple pack management helpers to pin or check versions without leaving Neovim
+pcall(function()
+  local function sys(cmd, cwd)
+    local res = vim.system(cmd, { text = true, cwd = cwd }):wait()
+    return res.code, (res.stdout or ''):gsub('\n$', ''), (res.stderr or '')
+  end
+
+  local function for_each_plugin(fn)
+    for _, p in ipairs(registered_plugins) do
+      fn(p)
+    end
+  end
+
+  vim.api.nvim_create_user_command('PackStatus', function()
+    local lines = { 'PackStatus ~' }
+    for_each_plugin(function(p)
+      local code_h, head = sys({ 'git', 'rev-parse', '--short', 'HEAD' }, p.path)
+      local _, tag = sys({ 'git', 'describe', '--tags', '--exact-match' }, p.path)
+      local status
+      if tag and #tag > 0 then
+        status = string.format('%-22s tag:%s (%s)', p.name, tag, head or '?')
+      else
+        status = string.format('%-22s head:%s', p.name, head or '?')
+      end
+      table.insert(lines, status)
+    end)
+    vim.api.nvim_echo({ { table.concat(lines, '\n') } }, false, {})
+  end, { desc = 'Show git status of all ensured plugins' })
+
+  vim.api.nvim_create_user_command('PackCheckoutTags', function()
+    for_each_plugin(function(p)
+      sys({ 'git', 'fetch', '--tags', '--force' }, p.path)
+      local code_t, latest = sys({ 'git', 'describe', '--tags', '--abbrev=0' }, p.path)
+      if code_t == 0 and latest and #latest > 0 then
+        local code_c = sys({ 'git', '-c', 'advice.detachedHead=false', 'checkout', '--force', latest }, p.path)
+        if code_c ~= 0 then
+          vim.notify('Failed to checkout tag for ' .. p.name .. ' (' .. (latest or '?') .. ')', vim.log.levels.WARN)
+        end
+      else
+        -- no tags available; skip
+      end
+    end)
+    vim.notify('Pack: checked out latest tags (where available).', vim.log.levels.INFO)
+  end, { desc = 'Checkout latest tag for all ensured plugins' })
+
+  vim.api.nvim_create_user_command('PackCheckout', function(opts)
+    local name, ref = opts.fargs[1], opts.fargs[2]
+    if not name or not ref then
+      vim.notify('Usage: :PackCheckout {name} {ref}', vim.log.levels.WARN)
+      return
+    end
+    for _, p in ipairs(registered_plugins) do
+      if p.name == name then
+        sys({ 'git', 'fetch', '--tags', '--force' }, p.path)
+        local code = sys({ 'git', '-c', 'advice.detachedHead=false', 'checkout', '--force', ref }, p.path)
+        if code == 0 then
+          vim.notify('Checked out ' .. name .. ' -> ' .. ref, vim.log.levels.INFO)
+        else
+          vim.notify('Failed to checkout ' .. name .. ' -> ' .. ref, vim.log.levels.ERROR)
+        end
+        return
+      end
+    end
+    vim.notify('Plugin not found: ' .. name, vim.log.levels.WARN)
+  end, { nargs = 2, complete = function()
+    local names = {}
+    for _, p in ipairs(registered_plugins) do table.insert(names, p.name) end
+    return names
+  end, desc = 'Checkout a specific ref (tag/branch/commit) for a plugin' })
+end)
 
 -- Configure Oil (minimal)
 pcall(function()
@@ -180,6 +282,7 @@ pcall(function()
       native_lsp = { enabled = true, inlay_hints = { background = true } },
       -- Improves CLI fzf colors (fzf-lua uses the fzf binary and will inherit these)
       fzf = true,
+      ["blink-cmp"] = true,
     },
   })
   vim.cmd('colorscheme catppuccin')
@@ -271,11 +374,33 @@ pcall(function()
   })
 end)
 
+-- Helper command: update the 'vim' Treesitter parser to fix runtime query mismatch
+-- Use when seeing: Invalid node type "substitute" in vim/highlights.scm
+pcall(function()
+  vim.api.nvim_create_user_command('TSFixVimParser', function()
+    local ok, install = pcall(require, 'nvim-treesitter.install')
+    if not ok then
+      vim.notify('nvim-treesitter not available', vim.log.levels.ERROR)
+      return
+    end
+    install.update({ with_sync = true })('vim')
+    vim.notify('Treesitter: updated vim parser', vim.log.levels.INFO)
+  end, { desc = 'Update Treesitter vim parser' })
+end)
+
 -- Noice: centered cmdline only (minimal)
 pcall(function()
   require('noice').setup({
     presets = { lsp_doc_border = true },
-    lsp = { progress = { enabled = false }, override = {} },
+    lsp = {
+      progress = { enabled = false },
+      override = {
+        ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
+        ["vim.lsp.util.stylize_markdown"] = true,
+        -- harmless if cmp not present; improves doc rendering when used
+        ["cmp.entry.get_documentation"] = true,
+      },
+    },
     messages = { enabled = false },
     notify = { enabled = false },
     popupmenu = { enabled = false },
@@ -303,48 +428,23 @@ pcall(function()
   })
 end)
 
--- Completion: nvim-cmp + LuaSnip, Ctrl-Y to accept/trigger, Ctrl-N/P navigate
+-- Completion: blink.cmp (fast LSP completion with docs/signature and auto-brackets)
 pcall(function()
-  local cmp = require('cmp')
-  local ls = require('luasnip')
-  cmp.setup({
-    snippet = {
-      expand = function(args) ls.lsp_expand(args.body) end,
+  local blink = require('blink.cmp')
+  blink.setup({
+    -- Keep defaults; Catppuccin integration styles the UI
+    -- Enable auto brackets on accept for function items
+    completion = {
+      accept = {
+        auto_brackets = { enabled = true },
+      },
+      documentation = {
+        auto_show = true,
+        auto_show_delay_ms = 200,
+      },
     },
-    window = {
-      completion = cmp.config.window.bordered(),
-      documentation = cmp.config.window.bordered(),
-    },
-    mapping = {
-      -- Ctrl-N / Ctrl-P: navigate when visible else open completion
-      ['<C-n>'] = cmp.mapping(function(fallback)
-        if cmp.visible() then cmp.select_next_item() else cmp.complete() end
-      end, { 'i', 's' }),
-      ['<C-p>'] = cmp.mapping(function(fallback)
-        if cmp.visible() then cmp.select_prev_item() else cmp.complete() end
-      end, { 'i', 's' }),
-      -- Ctrl-Y: confirm when visible else trigger completion (requested behavior)
-      ['<C-y>'] = cmp.mapping(function()
-        if cmp.visible() then cmp.confirm({ select = false }) else cmp.complete() end
-      end, { 'i', 's' }),
-      -- Tab keys untouched (you use Copilot <S-Tab>)
-      ['<CR>'] = cmp.mapping.confirm({ select = false }),
-    },
-    sources = cmp.config.sources({
-      { name = 'nvim_lsp' },
-      { name = 'luasnip' },
-      { name = 'path' },
-      { name = 'buffer' },
-    }),
-    experimental = { ghost_text = false },
-    completion = { completeopt = table.concat(vim.opt.completeopt:get(), ',') },
-    formatting = { fields = { 'abbr', 'menu' } },
-    preselect = cmp.PreselectMode.None,
+    signature = { enabled = true },
   })
-
-  -- nvim-autopairs integration: auto insert matching chars after confirmation
-  local ok_pairs, cmp_autopairs = pcall(require, 'nvim-autopairs.completion.cmp')
-  if ok_pairs then cmp.event:on('confirm_done', cmp_autopairs.on_confirm_done()) end
 end)
 
 ---------------------------
