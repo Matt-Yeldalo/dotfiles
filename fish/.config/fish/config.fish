@@ -4,3 +4,4 @@ source ~/.bash_aliases
 source ~/.config/fish/functions/misc.fish
 
 starship init fish | source
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"

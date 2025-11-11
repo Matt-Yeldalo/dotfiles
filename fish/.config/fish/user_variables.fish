@@ -25,6 +25,7 @@ set -gx PATH $HOME/.local/share/cargo/bin $PATH
 set -gx PATH $HOME/.local/share/go/bin $PATH
 set -gx PATH $HOME/.local/bin $PATH
 set -gx PATH $HOME/.rbenv/shims $PATH
+set -gx PATH $HOME/.nvm/versions/node/v24.10.0/bin $PATH
 set -gx PATH $HOME/.cargo/bin $PATH
 set -gx PATH $HOME/zig-linux-x86_64-0.13.0 $PATH
 set -gx PATH $HOME/.zls $PATH
