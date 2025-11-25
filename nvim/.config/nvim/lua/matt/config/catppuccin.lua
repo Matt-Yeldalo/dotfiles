@@ -5,16 +5,9 @@ return {
     priority = 1000,
     config = function()
       local palette = require('catppuccin.palettes').get_palette 'macchiato'
-      local transparent_bg = require('catppuccin').options.transparent_background and 'NONE' or palette.mantle
 
       require('catppuccin').setup {
         custom_highlights = {
-          -- Blink Menu
-          -- Pmenu = { bg = palette.base },
-          -- PmenuSel = { bg = palette.surface1, style = { 'bold' } },
-          -- PmenuBar = { bg = palette.surface1 },
-          -- BlinkCmpMenuBorder = { bg = palette.base },
-
           -- Snacks
           SnacksNotifierInfo = { fg = palette.lavender },
           SnacksNotifierIconInfo = { fg = palette.lavender },
@@ -28,6 +21,14 @@ return {
         },
         styles = {
           comments = { 'italic' },
+          conditionals = { 'italic' },
+          functions = { 'bold' },
+          keywords = { 'italic' },
+        },
+        dim_inactive = {
+          enabled = true,
+          shade = 'dark',
+          percentage = 0.15,
         },
         background = {
           light = 'latte',
@@ -35,16 +36,26 @@ return {
         },
         transparent_background = true,
         term_colors = true,
-        -- auto_integrations = true,
         integrations = {
           snacks = {
             enabled = true,
             indent_scope_color = 'lavender',
           },
-        },
-        float = {
-          transparent = true,
-          solid = true,
+          blink_cmp = true,
+          gitsigns = true,
+          treesitter = true,
+          native_lsp = {
+            enabled = true,
+            underlines = {
+              errors = { 'undercurl' },
+              hints = { 'undercurl' },
+              warnings = { 'undercurl' },
+              information = { 'undercurl' },
+            },
+          },
+          telescope = { enabled = true },
+          which_key = true,
+          mini = { enabled = true },
         },
       }
       vim.cmd.colorscheme 'catppuccin'
