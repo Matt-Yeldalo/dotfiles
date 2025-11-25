@@ -1,6 +1,3 @@
--- Formatting setup via Conform.nvim
--- Prefer LSP formatting when available (ruby-lsp), and use external tools for others.
-
 return {
   'stevearc/conform.nvim',
   event = { 'BufWritePre' },
@@ -9,7 +6,7 @@ return {
     {
       '<leader>f',
       function()
-        require('conform').format { async = true, lsp_format = 'prefer' }
+        require('conform').format { async = true }
       end,
       mode = '',
       desc = '[F]ormat buffer',
@@ -20,6 +17,7 @@ return {
       erb_formatter = {
         command = os.getenv 'HOME' .. '/.rbenv/shims/erb-format',
         args = { '--stdin', '--print-width', '125' },
+        stdin = true,
       },
       rubocop = {
         command = os.getenv 'HOME' .. '/.rbenv/shims/rubocop',
@@ -38,7 +36,7 @@ return {
       scss = { 'prettierd', 'prettier', stop_after_first = true },
       markdown = { 'markdownlint' },
       html = { 'htmlbeautifier' },
-      ruby = { 'rubocop'},
+      ruby = { 'rubocop' },
       erb = { 'erb_formatter' },
       eruby = { 'erb_formatter' },
     },
