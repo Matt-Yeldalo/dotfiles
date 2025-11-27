@@ -20,7 +20,8 @@ return {
       },
       rubocop = {
         command = os.getenv 'HOME' .. '/.rbenv/shims/rubocop',
-        args = { '--auto-correct', '--stdin', '%filepath' },
+        -- args = { '--auto-correct', '--stdin', '%filepath' },
+        args = { "--server", "--autocorrect-all", "--stderr", "--force-exclusion", "--stdin", "$FILENAME" }
       },
     },
     notify_on_error = true,
