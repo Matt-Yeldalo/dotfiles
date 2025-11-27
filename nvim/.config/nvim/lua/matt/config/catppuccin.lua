@@ -34,7 +34,7 @@ return {
           light = 'latte',
           dark = 'macchiato',
         },
-        transparent_background = true,
+        transparent_background = false,
         term_colors = true,
         integrations = {
           snacks = {

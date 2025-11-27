@@ -17,12 +17,10 @@ return {
       erb_formatter = {
         command = os.getenv 'HOME' .. '/.rbenv/shims/erb-format',
         args = { '--stdin', '--print-width', '125' },
-        stdin = true,
       },
       rubocop = {
         command = os.getenv 'HOME' .. '/.rbenv/shims/rubocop',
         args = { '--auto-correct', '--stdin', '%filepath' },
-        stdin = true,
       },
     },
     notify_on_error = true,

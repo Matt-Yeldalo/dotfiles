@@ -4,7 +4,7 @@ vim.g.maplocalleader = ' '
 local keymap = vim.keymap.set
 local opts = { noremap = true, silent = true }
 
--- GOOD STUFF -- 
+-- GOOD STUFF --
 
 -- Chef's kiss - When pasting over word x, do not place x into buffer
 keymap('x', 'p', [["_dP]])
@@ -17,18 +17,17 @@ keymap({ 'n', 'o', 'x' }, '<s-h>', '^', opts)
 keymap({ 'n', 'o', 'x' }, '<s-l>', 'g_', opts)
 
 -- Prime
-keymap('v', 'J', ":m '>+1<CR>gv=gv", {desc = 'Move current line down'})
-keymap('v', 'K', ":m '<-2<CR>gv=gv", {desc = 'Move current line up'})
+keymap('v', 'J', ":m '>+1<CR>gv=gv", { desc = 'Move current line down' })
+keymap('v', 'K', ":m '<-2<CR>gv=gv", { desc = 'Move current line up' })
 
-keymap('n', 'J', 'mzJ`z', {desc = 'Remove space from next line'})
+keymap('n', 'J', 'mzJ`z', { desc = 'Remove space from next line' })
 
-keymap({'n', 'v'}, '<leader>y', [["+y"]], {desc = 'Yank next word'})
-keymap('n', '<leader>Y', [["+Y"]], {desc = 'Yank next line'})
+keymap({ 'n', 'v' }, '<leader>y', [["+y"]], { desc = 'Yank next word' })
+keymap('n', '<leader>Y', [["+Y"]], { desc = 'Yank next line' })
 
-keymap({'n', 'v'}, '<leader>d', [["_d"]], {desc = 'Delete && !No Buf'})
+keymap({ 'n', 'v' }, '<leader>d', [["_d"]], { desc = 'Delete && !No Buf' })
 
-keymap("n", "<leader>%g", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]],
-  {desc = 'Replace all under cursor'})
+keymap('n', '<leader>%g', [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], { desc = 'Replace all under cursor' })
 
 -- Stay in indent mode
 keymap('v', '<', '<gv', opts)
@@ -51,8 +50,12 @@ keymap('n', '<Esc>', '<cmd>nohlsearch<CR>')
 -- keymap('n', '<C-i>', '<C-i>', opts)
 
 -- Diagnostic keymaps
-keymap('n', '[d', function() vim.diagnostic.jump({ count = -1 }) end, { desc = 'Go to previous [D]iagnostic message' })
-keymap('n', ']d', function() vim.diagnostic.jump({ count = 1 }) end, { desc = 'Go to next [D]iagnostic message' })
+keymap('n', '[d', function()
+  vim.diagnostic.jump { count = -1 }
+end, { desc = 'Go to previous [D]iagnostic message' })
+keymap('n', ']d', function()
+  vim.diagnostic.jump { count = 1 }
+end, { desc = 'Go to next [D]iagnostic message' })
 
 -- Quickfix navigation
 keymap('n', ']q', '<cmd>cnext<CR>zz', { desc = 'Next quickfix' })
@@ -78,4 +81,3 @@ keymap('n', '<C-h>', '<C-w><C-h>', { desc = 'Move focus to the left window' })
 keymap('n', '<C-l>', '<C-w><C-l>', { desc = 'Move focus to the right window' })
 keymap('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower window' })
 keymap('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
-
