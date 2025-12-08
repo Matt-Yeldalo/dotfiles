@@ -82,7 +82,7 @@ return {
 
     local servers = {
       ruby_lsp = {
-        filetypes = { 'ruby', 'rb', 'eruby', 'erb' },
+        filetypes = { 'ruby', 'rb' },
         cmd = { 'bundle', 'exec', 'ruby-lsp' },
         root_dir = root_pattern('Gemfile', '.ruby-lsp'),
       },
