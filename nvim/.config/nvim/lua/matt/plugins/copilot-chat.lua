@@ -1,6 +1,7 @@
 return {
   'CopilotC-Nvim/CopilotChat.nvim',
   branch = 'main',
+  build = 'make tiktoken',
   dependencies = {
     { 'zbirenbaum/copilot.lua' },
     { 'nvim-lua/plenary.nvim' },
@@ -10,6 +11,7 @@ return {
   },
   config = function()
     require('CopilotChat').setup {
+      selection = require('CopilotChat.select').buffers,
       mappings = {
         reset = {
           normal = '',

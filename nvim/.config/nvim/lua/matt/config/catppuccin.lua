@@ -14,7 +14,12 @@ return {
           SnacksNotifierTitleInfo = { fg = palette.lavender, style = { 'italic' } },
           SnacksNotifierFooterInfo = { link = 'DiagnosticInfo' },
           SnacksNotifierBorderInfo = { fg = palette.lavender },
+          -- SnacksPickerPreviewTitle = { fg = palette.crust, bg = palette.lavender },
+          -- SnacksDashboardHeader = { fg = palette.lavender },
+
           SnacksPickerPreviewTitle = { fg = palette.crust, bg = palette.lavender },
+          SnacksPickerTitle = { fg = palette.crust, bg = palette.lavender },
+          SnacksPickerInputTitle = { fg = palette.crust, bg = palette.lavender },
           SnacksDashboardHeader = { fg = palette.lavender },
 
           ['@property'] = { fg = palette.lavender, style = require('catppuccin').options.styles.properties or {} },
