@@ -38,6 +38,5 @@ if status --is-interactive
 
     # Ensure no deprecated bind -k usage remains. Use supported bindings instead.
     # Example: Ctrl-K to kill the current line
-    bind \ck kill-line
-
+    # bind \ck kill-line
 end
