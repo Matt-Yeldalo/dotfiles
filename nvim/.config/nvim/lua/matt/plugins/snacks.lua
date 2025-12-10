@@ -19,14 +19,31 @@ return {
         files = {
           hidden = true,
         },
+        explorer = {
+          hidden = true,
+        },
       },
     },
     quickfile = { enabled = true },
-    scroll = { enabled = true },
+    scroll = {
+      enabled = true,
+      -- enabled = false,
+      -- duration = { step = 10, total = 100 }, -- faster animation (default 150)
+      -- easing = 'linear',
+      duration = { step = 1, total = 10 },
+    },
     statuscolumn = { enabled = true },
     words = { enabled = true },
   },
   keys = {
+    -- Explorer
+    {
+      '\\',
+      function()
+        Snacks.picker.explorer()
+      end,
+      desc = 'File Explorer',
+    },
     -- Git
     {
       '<leader>gB',
