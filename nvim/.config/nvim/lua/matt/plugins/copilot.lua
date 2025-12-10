@@ -12,6 +12,13 @@ return {
         },
       },
       panel = { enabled = true },
+      filetypes = {
+        yaml = true,
+        markdown = true,
+        help = false,
+        gitcommit = true,
+        gitrebase = true
+      },
     }
   end,
 }
