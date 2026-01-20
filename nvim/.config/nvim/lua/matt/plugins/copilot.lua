@@ -3,8 +3,12 @@ return {
   requires = { 'copilotlsp-nvim/copilot-lsp' },
   cmd = 'Copilot',
   event = 'InsertEnter',
+  requires = {
+    "copilotlsp-nvim/copilot-lsp", -- (optional) for NES functionality
+  },
   config = function()
     require('copilot').setup {
+      auth_provider_url = "https://busways.ghe.com",
       suggestion = {
         enabled = true,
         auto_trigger = true,
