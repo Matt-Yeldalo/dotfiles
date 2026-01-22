@@ -10,8 +10,12 @@ fi
 
 echo "Creating Rails 8 app: $APP_NAME"
 
+# Rubocop is skipped here to avoid version conflicts; it will be added later
 rails new "$APP_NAME" \
   --database=sqlite3 \
+  --skip-action-mailbox \
+  --skip-action-text \
+  --skip-rubocop \
   --skip-jbuilder \
   --skip-test \
   --skip-system-test \
@@ -40,6 +44,7 @@ bin/rails dartsass:install
 # Rename default stylesheet if desired
 if [ -f app/assets/stylesheets/application.scss ]; then
   echo "SCSS already exists"
+  rm app/assets/stylesheets/application.css
 else
   mv app/assets/stylesheets/application.css app/assets/stylesheets/application.scss
 fi
@@ -54,6 +59,7 @@ insert = <<~CONFIG
     # ViewComponent
     config.view_component.generate.sidecar = true
     config.view_component.preview_paths << Rails.root.join("spec/components/previews")
+    config.view_component.generate.stimulus_controller = true
 CONFIG
 
 content.sub!(
@@ -91,7 +97,7 @@ echo "Configuring Font Awesome..."
 cat <<EOF >> app/assets/stylesheets/application.scss
 
 @use "font-awesome" with (
-  $fa-font-path: "font-awesome"
+  \$fa-font-path: "font-awesome"
 );
 EOF
 
