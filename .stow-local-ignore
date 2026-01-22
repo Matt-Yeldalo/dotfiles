@@ -4,6 +4,7 @@
 .stow-local-ignore
 README.md
 LICENSE
+new_rails_app.sh
 
 # OS-specific metadata
 .DS_Store
