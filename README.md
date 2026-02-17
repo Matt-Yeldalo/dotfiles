@@ -10,7 +10,6 @@ Check [sources](/doc/sources.md)
 ## Install
 
 - cargo:
-- neovide: `cargo install --git https://github.com/neovide/neovide`
 - fish
 - eza
 - fisher
@@ -24,3 +23,7 @@ bundle add ruby-lsp rubocop
 bundle add ruby-lsp-rails --group development
 bundle add erb-formatter htmlbeautifier --group development
 ```
+
+### Scripts
+
+- new_rails_app.sh

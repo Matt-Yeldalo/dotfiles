@@ -56,10 +56,10 @@ content = File.read(path)
 
 insert = <<~CONFIG
 
-    # ViewComponent
-    config.view_component.generate.sidecar = true
-    config.view_component.preview_paths << Rails.root.join("spec/components/previews")
-    config.view_component.generate.stimulus_controller = true
+        # ViewComponent
+        config.view_component.generate.sidecar = true
+        config.view_component.previews.paths << Rails.root.join("spec/components/previews")
+        config.view_component.generate.stimulus_controller = true
 CONFIG
 
 content.sub!(
