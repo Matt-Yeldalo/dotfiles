@@ -7,12 +7,14 @@ return {
       suggestion = {
         enabled = true,
         auto_trigger = true,
+        model = 'opus-4.6',
         keymap = {
           accept = '<S-Tab>', -- Shift+Tab to accept
         },
       },
       panel = { enabled = true },
       filetypes = {
+        bash = false,
         yaml = true,
         markdown = true,
         help = false,
