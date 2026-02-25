@@ -27,14 +27,6 @@ if status --is-interactive
         eval (~/.linuxbrew/bin/brew shellenv)
     end
 
-    # if test -d ~/.nvm
-    #     # NVM: load nvm if available
-    #     set -gx NVM_DIR ~/.nvm
-    #     if command -q nvm
-    #         nvm use 24.10 --silent 2>/dev/null
-    #     end
-    # end
-
     # Cargo env: REMOVE unconditional sourcing (file does not exist).
     # Rely on PATH entries from path_configuration.fish for cargo binaries.
     # If you ever generate a fish env file, re-add guarded sourcing:
@@ -43,8 +35,4 @@ if status --is-interactive
     # else if test -f ~/.cargo/env.fish
     #     source ~/.cargo/env.fish
     # end
-
-    # Ensure no deprecated bind -k usage remains. Use supported bindings instead.
-    # Example: Ctrl-K to kill the current line
-    # bind \ck kill-line
 end

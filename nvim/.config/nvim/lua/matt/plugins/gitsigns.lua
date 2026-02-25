@@ -24,5 +24,7 @@ return {
     { '<leader>hu', '<cmd>Gitsigns undo_stage_hunk<cr>', desc = 'Undo stage hunk' },
     { '<leader>hR', '<cmd>Gitsigns reset_buffer<cr>', desc = 'Reset buffer' },
     { '<leader>hb', '<cmd>Gitsigns blame_line<cr>', desc = 'Blame line' },
+    { '<leader>tb', '<cmd>Gitsigns toggle_current_line_blame<cr>', desc = 'Toggle current line blame' },
+     { '<leader>td', '<cmd>Gitsigns toggle_deleted<cr>', desc = 'Toggle deleted' },
   },
 }

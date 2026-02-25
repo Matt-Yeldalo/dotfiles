@@ -19,7 +19,7 @@ return {
           callback = function() end,
         },
       },
-      model = 'claude-opus-4.6',
+      model = 'claude-haiku-4.5',
       show_help = true,
       prompts = {
         Explain = 'Explain how this code works.',

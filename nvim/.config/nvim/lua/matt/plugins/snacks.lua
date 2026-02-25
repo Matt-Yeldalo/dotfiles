@@ -36,8 +36,12 @@ return {
       sources = {
         files = {
           hidden = true,
+          excluded = {},
         },
         explorer = {
+          hidden = true,
+        },
+        grep = {
           hidden = true,
         },
       },

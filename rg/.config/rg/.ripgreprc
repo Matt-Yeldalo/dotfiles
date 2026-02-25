@@ -1,3 +1,8 @@
 #!/bin/bash
 
 --smart-case
+--hidden
+--max-columns=200
+--type-add=web:*.{html,css,js,jsx,ts,tsx,vue,svelte}
+--type-add=shell:*.{sh,bash,fish,zsh,ps1}
+--color=always
