@@ -7,7 +7,7 @@ return {
       suggestion = {
         enabled = true,
         auto_trigger = true,
-        model = 'opus-4.6',
+        model = 'haiku-4.5',
         keymap = {
           accept = '<S-Tab>', -- Shift+Tab to accept
         },
