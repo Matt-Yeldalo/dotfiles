@@ -26,15 +26,6 @@ if status --is-interactive
     else if test -x ~/.linuxbrew/bin/brew
         eval (~/.linuxbrew/bin/brew shellenv)
     end
-
-    # Cargo env: REMOVE unconditional sourcing (file does not exist).
-    # Rely on PATH entries from path_configuration.fish for cargo binaries.
-    # If you ever generate a fish env file, re-add guarded sourcing:
-    # if test -f ~/.local/share/cargo/env.fish
-    #     source ~/.local/share/cargo/env.fish
-    # else if test -f ~/.cargo/env.fish
-    #     source ~/.cargo/env.fish
-    # end
 end
 
 # Added by `rbenv init` on Wed Mar  4 21:02:54 AEDT 2026

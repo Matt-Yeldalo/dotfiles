@@ -33,7 +33,7 @@ return {
       javascriptreact = { 'prettierd', 'prettier', stop_after_first = true },
       css = { 'prettierd', 'prettier', stop_after_first = true },
       scss = { 'prettierd', 'prettier', stop_after_first = true },
-      markdown = { 'markdownlint' },
+      markdown = { 'prettier' },
       html = { 'htmlbeautifier' },
       ruby = { 'rubocop' },
       erb = { 'erb_formatter' },

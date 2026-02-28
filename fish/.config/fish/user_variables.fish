@@ -1,5 +1,8 @@
 # XDG Base Directory variables first (used below)
-set -xg XDG_RUNTIME_DIR /run/user/1000
+if test (uname) = Darwin
+    set -gx XDG_RUNTIME_DIR (string trim -r -c '/' $TMPDIR)
+end
+# set -xg XDG_RUNTIME_DIR /run/user/1000
 set -xg XDG_CONFIG_HOME $HOME/.config
 set -xg XDG_CACHE_HOME $HOME/.cache
 set -xg XDG_DATA_HOME $HOME/.local/share

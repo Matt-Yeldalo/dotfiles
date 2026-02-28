@@ -28,7 +28,6 @@ echo "Adding gems..."
 
 bundle add dartsass-rails
 bundle add view_component
-bundle add font-awesome-sass
 bundle add rubocop --group=development,test
 bundle add ruby-lsp --group=development
 bundle add rubocop-rails --group=development,test

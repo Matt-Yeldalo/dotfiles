@@ -25,6 +25,11 @@ bundle add ruby-lsp-rails --group development
 bundle add erb-formatter htmlbeautifier --group development
 ```
 
+```bash
+npm install -g prettier
+npm install markdownlint-cli
+```
+
 ### Scripts
 
 - new_rails_app.sh
