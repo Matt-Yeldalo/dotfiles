@@ -1,0 +1,49 @@
+# This is to be used in WSL not linux
+[terminal.shell]
+program = "wsl.exe"
+args = ["-d", "Ubuntu"] # Replace with your actual distro name
+
+[env]
+TERM = "xterm-256color"
+
+[window]
+startup_mode = "Fullscreen"  # or "Fullscreen" for real fullscreen (no taskbar)
+decorations = "None"         # Removes title bar and borders
+dynamic_title = false
+opacity = 0.95               # Transparent background (set 1.0 for opaque)
+padding = { x = 12, y = 10 } # Adds breathing room
+
+[font]
+normal = { family = "Maple Mono NF", style = "Regular" }
+size = 14
+offset = { x = 0, y = 1 }                                # Slight vertical adjustment
+
+[keyboard]
+bindings = [
+  { key = "Space", mods = "Control", chars = "\u0000" },
+  { key = "V", mods = "Control | Shift", action = "Paste" },    # Paste with Cmd+V
+  { key = "C", mods = "Control | Shift", action = "Copy" },     # Copy with Cmd+C
+  { key = "F11", action = "ToggleFullscreen" },         # Toggle fullscreen with F11
+  { key = "F12", action = "ToggleMaximized" },          # Toggle maximized window with F12
+]
+
+[scrolling]
+history = 10000
+multiplier = 3  # Makes mouse scroll faster
+
+[cursor]
+style = { shape = "Block", blinking = "On" }
+
+[selection]
+save_to_clipboard = true # Auto-copy on selection
+
+[colors]
+# Optional: Dracula theme base (adjust as needed)
+primary.background = "#1e1e2e"
+primary.foreground = "#cdd6f4"
+
+cursor = { text = "#1e1e2e", cursor = "#f5e0dc" }
+selection = { text = "CellForeground", background = "#585b70" }
+
+# Optional: apply an existing theme
+#import = ["C:/Users/YOUR_NAME/.config/alacritty/themes/dracula.toml"]
