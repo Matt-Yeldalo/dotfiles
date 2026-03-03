@@ -105,6 +105,7 @@ EOF
 echo "Initializing git..."
 
 git init
+git checkout -b master
 git add .
 git commit -m "Initial Rails 8 setup with Hotwire, ViewComponent, SASS, and tooling"
 

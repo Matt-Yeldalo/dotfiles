@@ -15,6 +15,7 @@ return {
       panel = { enabled = true },
       filetypes = {
         bash = false,
+        sh = false,
         yaml = true,
         markdown = true,
         help = false,
