@@ -17,6 +17,7 @@ Check [sources](/doc/sources.md)
 - delta
 - vivid
 - atuin
+- npm install -g neovim
 
 ```ruby
 bundle add ruby-lsp rubocop

@@ -36,3 +36,8 @@ if status --is-interactive
     #     source ~/.cargo/env.fish
     # end
 end
+
+# Added by `rbenv init` on Wed Mar  4 21:02:54 AEDT 2026
+status --is-interactive; and rbenv init - fish | source
+
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv fish)"
