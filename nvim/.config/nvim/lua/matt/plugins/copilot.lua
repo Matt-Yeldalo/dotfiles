@@ -1,5 +1,6 @@
 return {
   'zbirenbaum/copilot.lua',
+  requires = { 'copilotlsp-nvim/copilot-lsp' },
   cmd = 'Copilot',
   event = 'InsertEnter',
   config = function()
@@ -20,7 +21,7 @@ return {
         markdown = true,
         help = false,
         gitcommit = true,
-        gitrebase = true
+        gitrebase = true,
       },
     }
   end,
