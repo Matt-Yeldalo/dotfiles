@@ -28,47 +28,48 @@ else if test -n "$PATH"
     set -gx ORIG_PATH (string join : $PATH)
 end
 
-# Use fish_add_path (idempotent, prepends, avoids duplicates)
+# Use fish_add_path globally (idempotent, prepends, avoids duplicates)
+# Avoid universal fish_user_paths so paths do not leak across machines.
 # Local bins and scripts
-fish_add_path $XDG_BIN_HOME
-fish_add_path $XDG_SCRIPT_HOME
-fish_add_path $XDG_BIN_HOME/color-scripts/
+fish_add_path -g $XDG_BIN_HOME
+fish_add_path -g $XDG_SCRIPT_HOME
+fish_add_path -g $XDG_BIN_HOME/color-scripts/
 
 # Common system directories
-fish_add_path /usr/local/bin
-fish_add_path /usr/local/sbin
-fish_add_path /usr/bin
-fish_add_path /usr/sbin
-fish_add_path /bin
-fish_add_path /sbin
+fish_add_path -g /usr/local/bin
+fish_add_path -g /usr/local/sbin
+fish_add_path -g /usr/bin
+fish_add_path -g /usr/sbin
+fish_add_path -g /bin
+fish_add_path -g /sbin
 
 # Language/toolchain bins
-fish_add_path $GOPATH/bin
-fish_add_path $CARGO_HOME/bin
-fish_add_path /usr/lib/rustup/bin
-fish_add_path /usr/lib/go/bin
+fish_add_path -g $GOPATH/bin
+fish_add_path -g $CARGO_HOME/bin
+fish_add_path -g /usr/lib/rustup/bin
+fish_add_path -g /usr/lib/go/bin
 
 # Editors/tools
-fish_add_path $XDG_DATA_HOME/npm/bin
-fish_add_path ~/.cargo/bin
-fish_add_path ~/.local/bin
-fish_add_path ~/fzf/bin
+fish_add_path -g $XDG_DATA_HOME/npm/bin
+fish_add_path -g ~/.cargo/bin
+fish_add_path -g ~/.local/bin
+fish_add_path -g ~/fzf/bin
 
 # Node/NVM (adjust version if needed; guards are harmless if missing)
-fish_add_path ~/.nvm
-fish_add_path ~/.nvm/versions/node/v24.10.0/bin
+fish_add_path -g ~/.nvm
+fish_add_path -g ~/.nvm/versions/node/v24.10.0/bin
 
 # Ruby (rbenv shims)
-fish_add_path ~/.rbenv/shims
+fish_add_path -g ~/.rbenv/shims
 
 # Zig and ZLS (adjust paths to your installs)
-fish_add_path ~/zig-linux-x86_64-0.13.0
-fish_add_path ~/.zls
+fish_add_path -g ~/zig-linux-x86_64-0.13.0
+fish_add_path -g ~/.zls
 
 # Homebrew (Linuxbrew or macOS; harmless if not present)
-fish_add_path /home/linuxbrew/.linuxbrew/bin
-fish_add_path ~/.linuxbrew/bin
-fish_add_path /opt/homebrew/bin
+fish_add_path -g /home/linuxbrew/.linuxbrew/bin
+fish_add_path -g ~/.linuxbrew/bin
+fish_add_path -g /opt/homebrew/bin
 
 # Editor and pager
 set -xg EDITOR nvim

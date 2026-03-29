@@ -1,10 +1,14 @@
--- local theme = require 'matt.config.catppuccin'
--- local theme = require 'matt.config.onedarkpro'
--- return { theme }
 return {
   'olimorris/onedarkpro.nvim',
-  priority = 1000, -- Ensure it loads first
+  priority = 1000,
   config = function()
-    vim.cmd 'colorscheme onedark_dark'
+    require('onedarkpro').setup {
+      styles = {
+        comments = 'italic',
+        keywords = 'bold,italic',
+        functions = 'bold',
+      }
+    }
+    vim.cmd 'colorscheme vaporwave'
   end,
 }
