@@ -58,5 +58,5 @@ vim.opt.hidden = false
 -- Better diff mode
 vim.opt.diffopt:append { 'algorithm:patience', 'indent-heuristic' }
 --Ensures Noice always has valid groups during redraw
-vim.api.nvim_set_hl(0, 'NormalFloat', { bg = '#1e1e1e' })
-vim.api.nvim_set_hl(0, 'FloatBorder', { fg = '#3a3a3a' })
+-- vim.api.nvim_set_hl(0, 'NormalFloat', { bg = '#1e1e1e' })
+-- vim.api.nvim_set_hl(0, 'FloatBorder', { fg = '#3a3a3a' })
