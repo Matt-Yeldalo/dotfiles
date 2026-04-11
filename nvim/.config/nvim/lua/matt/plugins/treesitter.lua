@@ -1,12 +1,9 @@
 return {
-  -- Highlight, edit, and navigate code
   'nvim-treesitter/nvim-treesitter',
+  lazy = false,
+  branch = 'main',
   build = ':TSUpdate',
-  main = 'nvim-treesitter.configs', -- Sets main module to use for opts
   opts = {
-    playground = {
-      enable = true,
-    },
     ensure_installed = {
       'bash',
       'c',
@@ -22,6 +19,7 @@ return {
       'vimdoc',
       'ruby',
       'embedded_template',
+      'javascript',
     },
     auto_install = true,
     highlight = {

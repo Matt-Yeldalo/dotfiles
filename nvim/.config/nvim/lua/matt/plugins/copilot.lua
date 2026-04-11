@@ -8,7 +8,7 @@ return {
   },
   config = function()
     require('copilot').setup {
-      auth_provider_url = "https://busways.ghe.com",
+      -- auth_provider_url = "https://busways.ghe.com",
       suggestion = {
         enabled = true,
         auto_trigger = true,

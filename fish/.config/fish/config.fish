@@ -32,3 +32,5 @@ end
 status --is-interactive; and rbenv init - fish | source
 
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv fish)"
+
+nvm use v24.10.0 --silent 2>/dev/null
