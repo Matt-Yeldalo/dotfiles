@@ -25,6 +25,7 @@ vim.api.nvim_create_autocmd('FileType', {
     'vimdoc',
     'ruby',
     'embedded_template',
+    'eruby',
     'javascript',
   },
   callback = function()
