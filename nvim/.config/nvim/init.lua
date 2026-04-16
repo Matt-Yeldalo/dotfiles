@@ -29,6 +29,10 @@ vim.api.nvim_create_autocmd('FileType', {
     'eruby',
     'javascript',
     'copilot-chat',
+    'gitcommit',
+    'gitrebase',
+    'gitconfig',
+    'gitignore',
   },
   callback = function()
     vim.treesitter.start()
