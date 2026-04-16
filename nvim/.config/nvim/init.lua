@@ -15,6 +15,7 @@ vim.api.nvim_create_autocmd('FileType', {
     'c',
     'diff',
     'html',
+    'scss',
     'lua',
     'regex',
     'luadoc',
@@ -27,6 +28,7 @@ vim.api.nvim_create_autocmd('FileType', {
     'embedded_template',
     'eruby',
     'javascript',
+    'copilot-chat',
   },
   callback = function()
     vim.treesitter.start()
