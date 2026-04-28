@@ -26,6 +26,7 @@ return {
     },
     notify_on_error = true,
     formatters_by_ft = {
+      rust = { 'rustfmt' },
       lua = { 'stylua' },
       javascript = { 'prettierd', 'prettier', stop_after_first = true },
       typescript = { 'prettierd', 'prettier', stop_after_first = true },
