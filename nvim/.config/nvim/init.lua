@@ -11,6 +11,7 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 
 vim.api.nvim_create_autocmd('FileType', {
   pattern = {
+    'rust',
     'bash',
     'c',
     'diff',

@@ -87,6 +87,11 @@ return {
     end
 
     local servers = {
+      rust_analyzer = {
+        filetypes = { 'rust' },
+        cmd = { 'rust-analyzer' },
+        root_dir = root_pattern('Cargo.toml'),
+      },
       ruby_lsp = {
         filetypes = { 'ruby', 'rb' },
         cmd = { 'bundle', 'exec', 'ruby-lsp' },
