@@ -18,20 +18,20 @@
 -- }
 
 local onedark_dark_colors = {
-    bg = "#000000",
-    fg = "#abb2bf",
-    red = "#ef596f",
-    orange = "#d19a66",
-    yellow = "#e5c07b",
-    green = "#89ca78",
-    cyan = "#2bbac5",
-    blue = "#61afef",
-    purple = "#d55fde",
-    white = "#abb2bf",
-    black = "#000000",
-    gray = "#434852",
-    highlight = "#e2be7d",
-    comment = "#7f848e",
+    bg = "#1e1b17",       -- dark walnut
+    fg = "#c8b99a",       -- warm parchment
+    red = "#e07868",      -- coral terracotta
+    orange = "#e0a060",   -- warm amber
+    yellow = "#d4a855",   -- warm gold
+    green = "#8ab878",    -- muted sage
+    cyan = "#48a8a0",     -- warm teal
+    blue = "#6aaedc",     -- soft steel blue
+    purple = "#be7ec8",   -- muted mauve
+    white = "#c8b99a",
+    black = "#1e1b17",
+    gray = "#4a4038",     -- warm brownish-gray
+    highlight = "#d4a840",
+    comment = "#7a7060",  -- warm muted brown-gray
 }
 
 local function patternescape(str)
@@ -135,17 +135,17 @@ end
 local icons = require 'matt.icons'
 -- local custom_ondarkpro = require 'lualine.themes.onedark'
 local colors = {
-  bg = '#000000',
-  fg = '#bbc2cf',
-  yellow = '#ECBE7B',
-  cyan = '#008080',
-  darkblue = '#081633',
-  green = '#98be65',
-  orange = '#FF8800',
-  violet = '#a9a1e1',
-  magenta = '#c678dd',
-  blue = '#51afef',
-  red = '#ec5f67',
+  bg = '#1e1b17',       -- dark walnut
+  fg = '#c8b99a',       -- warm parchment
+  yellow = '#d4a855',   -- warm gold
+  cyan = '#48a8a0',     -- warm teal
+  darkblue = '#1a2a3a',
+  green = '#8ab878',    -- muted sage
+  orange = '#e0a060',   -- warm amber
+  violet = '#be7ec8',   -- muted mauve
+  magenta = '#be7ec8',  -- muted mauve
+  blue = '#6aaedc',     -- soft steel blue
+  red = '#e07868',      -- coral terracotta
 }
 -- custom_ondarkpro.normal.c.bg = colors.bg
 

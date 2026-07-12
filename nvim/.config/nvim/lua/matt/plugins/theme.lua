@@ -3,6 +3,10 @@ return {
   priority = 1000,
   config = function()
     require('onedarkpro').setup {
+      themes = {
+        -- Register our custom cozy warm theme
+        cozy_dark = vim.fn.stdpath('config') .. '/lua/matt/themes/cozy_dark.lua',
+      },
       options = {
         cursorline = true, -- Use cursorline highlighting?
         transparency = false, -- Use a transparent background?
@@ -16,6 +20,6 @@ return {
         functions = 'bold',
       },
     }
-    vim.cmd 'colorscheme onedark_dark'
+    vim.cmd 'colorscheme cozy_dark'
   end,
 }
