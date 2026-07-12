@@ -33,7 +33,7 @@ vim.api.nvim_create_autocmd('FileType', {
     'gitcommit',
     'gitrebase',
     'gitconfig',
-    'gitignore',
+    -- 'gitignore',
   },
   callback = function()
     vim.treesitter.start()

@@ -19,12 +19,24 @@ return {
         -- map('<leader>D', require('telescope.builtin').lsp_type_definitions, 'Type [D]efinition')
         -- map('<leader>ds', require('telescope.builtin').lsp_document_symbols, '[D]ocument [S]ymbols')
         -- map('<leader>ws', require('telescope.builtin').lsp_dynamic_workspace_symbols, '[W]orkspace [S]ymbols')
-        map('gd', function() Snacks.picker.lsp_definitions() end, '[G]oto [D]efinition')
-        map('gr', function() Snacks.picker.lsp_references() end, '[G]oto [R]eferences')
-        map('gI', function() Snacks.picker.lsp_implementations() end, '[G]oto [I]mplementation')
-        map('<leader>D', function() Snacks.picker.lsp_type_definitions() end, 'Type [D]efinition')
-        map('<leader>ds', function() Snacks.picker.lsp_symbols() end, '[D]ocument [S]ymbols')
-        map('<leader>ws', function() Snacks.picker.lsp_workspace_symbols() end, '[W]orkspace [S]ymbols')
+        map('gd', function()
+          Snacks.picker.lsp_definitions()
+        end, '[G]oto [D]efinition')
+        map('gr', function()
+          Snacks.picker.lsp_references()
+        end, '[G]oto [R]eferences')
+        map('gI', function()
+          Snacks.picker.lsp_implementations()
+        end, '[G]oto [I]mplementation')
+        map('<leader>D', function()
+          Snacks.picker.lsp_type_definitions()
+        end, 'Type [D]efinition')
+        map('<leader>ds', function()
+          Snacks.picker.lsp_symbols()
+        end, '[D]ocument [S]ymbols')
+        map('<leader>ws', function()
+          Snacks.picker.lsp_workspace_symbols()
+        end, '[W]orkspace [S]ymbols')
         map('<leader>rn', vim.lsp.buf.rename, '[R]e[n]ame')
         map('<leader>ca', vim.lsp.buf.code_action, '[C]ode [A]ction', { 'n', 'x' })
         map('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
@@ -88,9 +100,12 @@ return {
 
     local servers = {
       rust_analyzer = {
+        check = {
+          command = 'clippy',
+        },
         filetypes = { 'rust' },
         cmd = { 'rust-analyzer' },
-        root_dir = root_pattern('Cargo.toml'),
+        root_dir = root_pattern 'Cargo.toml',
       },
       ruby_lsp = {
         filetypes = { 'ruby', 'rb' },
