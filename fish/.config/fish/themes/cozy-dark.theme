@@ -1,0 +1,30 @@
+# name: 'Cozy Dark'
+# A warmer, cozier take on onedark_dark
+
+fish_color_normal c8b99a
+fish_color_command 48a8a0
+fish_color_keyword be7ec8
+fish_color_quote d4a855
+fish_color_redirection c8b99a
+fish_color_end e0a060
+fish_color_option d4a855
+fish_color_error e07868
+fish_color_param 6aaedc
+fish_color_comment 7a7060
+fish_color_selection --background=443d34
+fish_color_search_match --background=443d34
+fish_color_operator c8b99a
+fish_color_escape be7ec8
+fish_color_autosuggestion 7a7060
+fish_color_cwd 48a8a0
+fish_color_user be7ec8
+fish_color_host e0a060
+fish_color_host_remote 8ab878
+fish_color_status e07868
+fish_color_valid_path 8ab878
+fish_color_prefix 6aaedc
+fish_pager_color_progress 7a7060
+fish_pager_color_prefix 48a8a0
+fish_pager_color_completion c8b99a
+fish_pager_color_description 7a7060
+fish_pager_color_selected_background --background=443d34

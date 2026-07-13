@@ -118,38 +118,36 @@ save_to_clipboard = true # Auto-copy on selection
 # background  = "#585B89"
 
 
-# One dark dark
+# Cozy Dark
 # Colors - https://github.com/olimorris/onedarkpro.nvim
 [colors.primary]
-background  = "#000000"
-foreground  = "#abb2bf"
+background  = "#1e1b17"
+foreground  = "#c8b99a"
 
 [colors.normal]
-
-black       = "#000000"
-red         = "#ef596f"
-green       = "#89ca78"
-yellow      = "#e5c07b"
-blue        = "#61afef"
-magenta     = "#d55fde"
-cyan        = "#2bbac5"
-white       = "#abb2bf"
+black       = "#1e1b17"
+red         = "#e07868"
+green       = "#8ab878"
+yellow      = "#d4a855"
+blue        = "#6aaedc"
+magenta     = "#be7ec8"
+cyan        = "#48a8a0"
+white       = "#c8b99a"
 
 [colors.bright]
-black       = "#1a1a1a"
-red         = "#f38897"
-green       = "#a9d89d"
-yellow      = "#edd4a6"
-blue        = "#8fc6f4"
-magenta     = "#e089e7"
-cyan        = "#4bced8"
-
-white       = "#c8cdd5"
+black       = "#3b352d"
+red         = "#e99e92"
+green       = "#a7ca99"
+yellow      = "#debd7e"
+blue        = "#93c4e6"
+magenta     = "#d0a2d7"
+cyan        = "#66bdb6"
+white       = "#dad0bb"
 
 [colors.cursor]
 text        = "CellBackground"
-cursor      = "CellForeground" # syntax-cursor-color
+cursor      = "CellForeground"
 
 [colors.selection]
 text        = "CellForeground"
-background  = "#434852"
+background  = "#443d34"
