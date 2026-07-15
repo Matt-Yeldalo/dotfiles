@@ -26,7 +26,10 @@ return {
     dashboard = { enabled = true },
     indent = { enabled = true },
     input = { enabled = true },
-    lazygit = {},
+    lazygit = {
+      enabled = true,
+      os = { editPreset = 'nvim-remote' },
+    },
     notifier = {
       enabled = true,
       timeout = 3000,
