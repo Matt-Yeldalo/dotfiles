@@ -28,7 +28,7 @@ vim.opt.laststatus = 3
 vim.opt.showmode = false
 vim.opt.wrap = false
 vim.opt.scrolloff = 10
-vim.opt.scroll = 10
+vim.opt.scroll = 30
 vim.opt.mouse = 'a'
 vim.opt.list = true
 vim.opt.listchars = { tab = '  ', trail = '·', nbsp = '␣' }

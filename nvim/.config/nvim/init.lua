@@ -9,6 +9,8 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   end,
 })
 
+vim.treesitter.language.register('markdown', 'octo')
+
 vim.api.nvim_create_autocmd('FileType', {
   pattern = {
     'rust',
