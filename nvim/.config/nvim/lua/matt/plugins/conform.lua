@@ -21,13 +21,14 @@ return {
       rubocop = {
         command = os.getenv 'HOME' .. '/.rbenv/shims/rubocop',
         -- args = { '--auto-correct', '--stdin', '%filepath' },
-        args = { "--server", "--autocorrect-all", "--stderr", "--force-exclusion", "--stdin", "$FILENAME" }
+        args = { '--server', '--autocorrect-all', '--stderr', '--force-exclusion', '--stdin', '$FILENAME' },
       },
     },
     notify_on_error = true,
     formatters_by_ft = {
       rust = { 'rustfmt' },
       lua = { 'stylua' },
+      json = { 'prettierd', 'prettier', 'jq', stop_after_first = true },
       javascript = { 'prettierd', 'prettier', stop_after_first = true },
       typescript = { 'prettierd', 'prettier', stop_after_first = true },
       typescriptreact = { 'prettierd', 'prettier', stop_after_first = true },
