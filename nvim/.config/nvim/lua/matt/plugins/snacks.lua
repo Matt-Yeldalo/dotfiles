@@ -214,6 +214,13 @@ return {
       desc = '[S]earch [M]odels',
     },
     {
+      '<leader>st',
+      function()
+        Snacks.picker.files { cwd = vim.fs.dirname(vim.fs.find({ '.git', 'Gemfile' }, { upward = true })[1]) .. '/lib/tasks' }
+      end,
+      desc = '[S]earch [T]asks',
+    },
+    {
       '<leader>sj',
       function()
         Snacks.picker.files { cwd = vim.fs.dirname(vim.fs.find({ '.git', 'Gemfile' }, { upward = true })[1]) .. '/app/javascript' }
