@@ -14,9 +14,12 @@ return {
   },
   opts = {
     formatters = {
+      prettier = {
+        prepend_args = { '--prose-wrap', 'always', '--print-width', '80' },
+      },
       erb_formatter = {
         command = os.getenv 'HOME' .. '/.rbenv/shims/erb-format',
-        args = { '--stdin', '--print-width', '125' },
+        args = { '--stdin', '--print-width', '140' },
       },
       rubocop = {
         command = os.getenv 'HOME' .. '/.rbenv/shims/rubocop',
