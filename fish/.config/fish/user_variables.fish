@@ -75,7 +75,7 @@ fish_add_path -g /opt/homebrew/bin
 set -xg EDITOR nvim
 set -xg VISUAL $EDITOR
 set -xg SUDO_EDITOR $EDITOR
-set -xg PAGER bat
+set -xg PAGER batcat
 
 # FZF configuration
 # set -xg FZF_DEFAULT_COMMAND "fd --type f --hidden --no-ignore"

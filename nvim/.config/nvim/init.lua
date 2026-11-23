@@ -9,6 +9,64 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   end,
 })
 
+-- 1. Set filetype for .js.erb
+vim.api.nvim_create_autocmd({ 'BufRead', 'BufNewFile' }, {
+  pattern = '*.js.erb',
+  callback = function()
+    vim.bo.filetype = 'jserb'
+  end,
+})
+
+-- 2. Register 'jserb' pointing to the embedded_template binary AND C symbol
+local parser_paths = vim.api.nvim_get_runtime_file('parser/embedded_template.*', false)
+if #parser_paths > 0 then
+  vim.treesitter.language.add('jserb', {
+    path = parser_paths[1],
+    symbol_name = 'embedded_template',
+  })
+end
+
+-- 3. Set highlights and injections for the 'jserb' language
+vim.treesitter.query.set(
+  'jserb',
+  'highlights',
+  [[
+  [
+    "<%"
+    "<%="
+    "<%=="
+    "<%-"
+    "<%#"
+    "%>"
+    "-%>"
+    "=%>"
+  ] @keyword
+
+  (comment_directive) @comment
+]]
+)
+
+vim.treesitter.query.set(
+  'jserb',
+  'injections',
+  [[
+  ((code) @injection.content
+   (#set! injection.language "ruby")
+   (#set! injection.combined))
+
+  ((content) @injection.content
+   (#set! injection.language "javascript")
+   (#set! injection.combined))
+]]
+)
+
+-- 4. Start Tree-sitter with the new 'jserb' language
+vim.api.nvim_create_autocmd('FileType', {
+  pattern = 'jserb',
+  callback = function(args)
+    vim.treesitter.start(args.buf, 'jserb')
+  end,
+})
 vim.treesitter.language.register('markdown', 'octo')
 
 vim.api.nvim_create_autocmd('FileType', {
@@ -30,6 +88,7 @@ vim.api.nvim_create_autocmd('FileType', {
     'ruby',
     'embedded_template',
     'eruby',
+    'jserb',
     'javascript',
     'copilot-chat',
     'gitcommit',
